@@ -73,7 +73,7 @@
             @enderror
           </div>
           <div class="mb-3">
-            <label for="phonenumber" class="form-label">No Handphone</label>
+            <label for="phonenumber" class="form-label">Telepon</label>
             <input type="number" class="form-control @error('phonenumber') is-invalid @enderror" id="phonenumber" name="phonenumber" value="{{old('phonenumber', $doctor->phonenumber)}}">
             @error('phonenumber')
             <div class="invalid-feedback">

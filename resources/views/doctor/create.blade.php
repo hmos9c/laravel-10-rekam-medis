@@ -31,7 +31,7 @@
       <div class="card-body">
           <div class="mb-3">
             <label for="id" class="form-label">No Dokter</label>
-            <input type="id" class="form-control @error('id') is-invalid @enderror" id="id" name="id" autofocus value="{{old('id')}}">
+            <input type="text" class="form-control @error('id') is-invalid @enderror" id="id" name="id" autofocus value="{{old('id')}}">
             @error('id')
             <div class="invalid-feedback">
               {{$message}}
@@ -57,7 +57,7 @@
             @enderror
           </div>
           <div class="mb-3">
-            <label for="phonenumber" class="form-label">No Handphone</label>
+            <label for="phonenumber" class="form-label">Telepon</label>
             <input type="number" class="form-control @error('phonenumber') is-invalid @enderror" id="phonenumber" name="phonenumber" value="{{old('phonenumber')}}">
             @error('phonenumber')
             <div class="invalid-feedback">

@@ -28,7 +28,7 @@
             <th>No</th>
             <th class="d-none d-md-table-cell">No Pegawai</th>
             <th>Nama</th>
-            <th>Jabatan</th>
+            <th class="d-none d-md-table-cell">Jabatan</th>
             <th class="d-none d-md-table-cell">No Handphone</th>
             <th>Aksi</th>
           </tr>
@@ -36,10 +36,10 @@
         <tbody>
           @foreach ($employees as $employee)
           <tr>
-            <td>{{$loop->iteration}}</td>
+            <td>{{$loop->iteration + $employees->firstItem() - 1}}</td>
             <td class="d-none d-md-table-cell">{{$employee->id}}</td>
             <td>{{$employee->name}}</td>
-            <td>{{$employee->position}}</td>
+            <td class="d-none d-md-table-cell">{{$employee->position}}</td>
             <td class="d-none d-md-table-cell">{{$employee->phonenumber}}</td>
             <td>
               <a href="/employee/{{$employee->id}}" class="btn btn-info btn-sm"><i data-feather="eye"></i></a>

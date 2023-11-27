@@ -41,7 +41,7 @@
         <tbody>
           @foreach ($beds as $bed)
           <tr>
-            <td>{{$loop->iteration}}</td>
+            <td>{{$loop->iteration + $beds->firstItem() - 1}}</td>
             <td>{{$bed->id}}</td>
             <td class="d-none d-md-table-cell">{{$bed->room->building->name}}</td>
             <td>{{$bed->room->name}}</td>

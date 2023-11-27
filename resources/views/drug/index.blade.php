@@ -35,18 +35,18 @@
             <th class="d-none d-md-table-cell">No Obat</th>
             <th>Nama</th>
             <th>Jenis</th>
-            <th>Bentuk</th>
+            <th class="d-none d-md-table-cell">Bentuk</th>
             <th>Aksi</th>
           </tr>
         </thead>
         <tbody>
           @foreach ($drugs as $drug)
           <tr>
-            <td>{{$loop->iteration}}</td>
+            <td>{{$loop->iteration + $drugs->firstItem() - 1}}</td>
             <td class="d-none d-md-table-cell">{{$drug->id}}</td>
             <td>{{$drug->name}}</td>
             <td>{{$drug->type->name}}</td>
-            <td>{{$drug->form->name}}</td>
+            <td class="d-none d-md-table-cell">{{$drug->form->name}}</td>
             <td>
               <a href="/drug/{{$drug->id}}" class="btn btn-info btn-sm"><i data-feather="eye"></i></a>
 							<a href="/drug/{{$drug->id}}/edit" class="btn btn-warning btn-sm"><i data-feather="edit"></i></a>

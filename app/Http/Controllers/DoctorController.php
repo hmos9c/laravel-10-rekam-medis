@@ -37,11 +37,11 @@ class DoctorController extends Controller
     public function store(Request $request)
     {
         $validator = $request->validate([
-            'id' => 'required|min:17|max:17|unique:doctors',
+            'id' => 'required|min:10|max:16|unique:doctors',
             'gender_id' => 'required',
             'name' => 'required',
             'specialist' => 'nullable',
-            'phonenumber' => 'required|min:12|max:12',
+            'phonenumber' => 'required|min:10|max:12',
             'accepted' => 'required',
             'address' => 'required',
             'image' => 'nullable|image|file|max:1024'
@@ -85,13 +85,13 @@ class DoctorController extends Controller
             'gender_id' => 'required',
             'name' => 'required',
             'specialist' => 'nullable',
-            'phonenumber' => 'required|min:12|max:12',
+            'phonenumber' => 'required|min:10|max:12',
             'accepted' => 'required',
             'address' => 'nullable',
             'image' => 'nullable|image|file|max:1024'
         ];
         if($request->id != $doctor->id){
-            $rules['id'] = 'required|min:17|max:17|unique:doctors';
+            $rules['id'] = 'required|min:10|max:16|unique:doctors';
         }
         $validator = $request->validate($rules);
         if($request->file('image')){

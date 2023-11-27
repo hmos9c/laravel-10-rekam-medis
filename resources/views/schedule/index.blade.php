@@ -36,7 +36,7 @@
         <tbody>
           @foreach ($schedules as $schedule)
           <tr>
-            <td>{{$loop->iteration}}</td>
+            <td>{{$loop->iteration + $schedules->firstItem() - 1}}</td>
             <td>{{$schedule->doctor->name}}</td>
             <td class="d-none d-md-table-cell">{{$schedule->doctor->specialist}}</td>
             <td class="d-none d-md-table-cell">{{$schedule->time}}</td>

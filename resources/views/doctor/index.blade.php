@@ -35,14 +35,14 @@
             <th class="d-none d-md-table-cell">No Dokter</th>
             <th>Nama</th>
             <th>Spesialis</th>
-            <th class="d-none d-md-table-cell">No Handphone</th>
+            <th class="d-none d-md-table-cell">Telepon</th>
             <th>Aksi</th>
           </tr>
         </thead>
         <tbody>
           @foreach ($doctors as $doctor)
           <tr>
-            <td>{{$loop->iteration}}</td>
+            <td>{{$loop->iteration + $doctors->firstItem() - 1}}</td>
             <td class="d-none d-md-table-cell">{{$doctor->id}}</td>
             <td>{{$doctor->name}}</td>
             <td>{{$doctor->specialist}}</td>

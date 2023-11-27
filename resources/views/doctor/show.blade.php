@@ -52,7 +52,7 @@
           <input type="text" class="form-control" id="specialist" name="specialist" value="{{$doctor->specialist}}" readonly>
         </div>
         <div class="mb-3">
-          <label for="phonenumber" class="form-label">No Handphone</label>
+          <label for="phonenumber" class="form-label">Telepon</label>
           <input type="number" class="form-control" id="phonenumber" name="phonenumber" value="{{$doctor->phonenumber}}" readonly>
         </div>
         <div class="mb-3">

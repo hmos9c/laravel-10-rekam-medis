@@ -42,7 +42,7 @@
         <tbody>
           @foreach ($patients as $patient)
           <tr>
-            <td>{{$loop->iteration}}</td>
+            <td>{{$loop->iteration + $patients->firstItem() - 1}}</td>
             <td class="d-none d-md-table-cell">{{$patient->id}}</td>
             <td>{{$patient->name}}</td>
             <td>{{$patient->phonenumber}}</td>

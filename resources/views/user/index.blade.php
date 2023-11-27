@@ -31,7 +31,7 @@
         <thead>
           <tr>
             <th>No</th>
-            <th>Nama</th>
+            <th class="d-none d-md-table-cell">Nama</th>
             <th>email</th>
             <th class="d-none d-md-table-cell">Terakhir Diubah</th>
             <th>Aksi</th>
@@ -40,8 +40,8 @@
         <tbody>
           @foreach ($users as $user)
           <tr>
-            <td>{{$loop->iteration}}</td>
-            <td>{{$user->name}}</td>
+            <td>{{$loop->iteration + $users->firstItem() - 1}}</td>
+            <td class="d-none d-md-table-cell">{{$user->name}}</td>
             <td>{{$user->email}}</td>
             <td class="d-none d-md-table-cell">{{$user->updated_at->diffForHumans()}}</td>
             <td>

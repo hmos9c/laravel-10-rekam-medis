@@ -36,7 +36,7 @@
         <tbody>
           @foreach ($records as $record)
           <tr>
-            <td>{{$loop->iteration}}</td>
+            <td>{{$loop->iteration + $records->firstItem() - 1}}</td>
             <td class="d-none d-md-table-cell">{{$record->id}}</td>
             <td>{{$record->patient->name}}</td>
             <td>{{$record->doctor->name}}</td>

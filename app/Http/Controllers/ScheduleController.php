@@ -38,7 +38,7 @@ class ScheduleController extends Controller
     public function store(Request $request)
     {
         $validator = $request->validate([
-            'doctor_id' => 'required|min:17|max:17|exists:doctors,id',
+            'doctor_id' => 'required|min:10|max:16|exists:doctors,id',
             'day_id' => 'required',
             'time' => 'required',
         ]);
@@ -76,7 +76,7 @@ class ScheduleController extends Controller
     public function update(Request $request, Schedule $schedule)
     {
         $validator = $request->validate([
-            'doctor_id' => 'required|min:17|max:17|exists:doctors,id',
+            'doctor_id' => 'required|min:10|max:16|exists:doctors,id',
             'day_id' => 'required',
             'time' => 'required',
         ]);

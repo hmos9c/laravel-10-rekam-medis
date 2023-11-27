@@ -40,7 +40,7 @@
         <tbody>
           @foreach ($types as $type)
           <tr>
-            <td>{{$loop->iteration}}</td>
+            <td>{{$loop->iteration + $types->firstItem() - 1}}</td>
             <td>{{$type->name}}</td>
             <td>{{$type->created_at->diffForHumans()}}</td>
             <td class="d-none d-md-table-cell">{{$type->updated_at->diffForHumans()}}</td>

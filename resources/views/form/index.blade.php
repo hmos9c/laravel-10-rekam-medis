@@ -40,7 +40,7 @@
         <tbody>
           @foreach ($forms as $form)
           <tr>
-            <td>{{$loop->iteration}}</td>
+            <td>{{$loop->iteration + $forms->firstItem() - 1}}</td>
             <td>{{$form->name}}</td>
             <td>{{$form->created_at->diffForHumans()}}</td>
             <td class="d-none d-md-table-cell">{{$form->updated_at->diffForHumans()}}</td>

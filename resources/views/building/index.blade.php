@@ -41,7 +41,7 @@
         <tbody>
           @foreach ($buildings as $building)
           <tr>
-            <td>{{$loop->iteration}}</td>
+            <td>{{$loop->iteration + $buildings->firstItem() - 1}}</td>
             <td class="d-none d-md-table-cell">{{$building->id}}</td>
             <td>{{$building->name}}</td>
             <td>{{$building->created_at->diffForHumans()}}</td>

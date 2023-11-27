@@ -47,7 +47,7 @@
       <div class="card-body">
           <div class="mb-3">
             <label for="id" class="form-label">Nomor Pegawai</label>
-            <input type="id" class="form-control @error('id') is-invalid @enderror" id="id" name="id" value="{{old('id', $employee->id)}}">
+            <input type="number" class="form-control @error('id') is-invalid @enderror" id="id" name="id" value="{{old('id', $employee->id)}}">
             @error('id')
             <div class="invalid-feedback">
               {{$message}}
