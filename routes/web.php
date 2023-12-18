@@ -16,6 +16,7 @@ use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\FrontendController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,12 +29,15 @@ use App\Http\Controllers\DashboardController;
 |
 */
 
-Route::get('/', [DashboardController::class, 'index'])->middleware('auth');
+Route::get('/', [FrontendController::class, 'index'])->middleware('guest');
+Route::get('/registerpatient', [FrontendController::class, 'create']);
+Route::post('/registerpatient', [FrontendController::class, 'store']);
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
 
 Route::get('/login', [LoginController::class,'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class,'authenticate']);
 Route::post('/logout', [LoginController::class,'logout']);
-Route::get('/register', [RegisterController::class,'index'])->middleware('guest');
+// Route::get('/register', [RegisterController::class,'index'])->middleware('guest');
 Route::post('/register', [RegisterController::class,'store']);
 
 Route::resource('/user', UserController::class)->middleware('auth');

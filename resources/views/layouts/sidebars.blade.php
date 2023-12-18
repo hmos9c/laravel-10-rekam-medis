@@ -9,8 +9,8 @@
         Data
       </li>
 
-      <li class="sidebar-item {{Request::is('/')?'active':''}}">
-        <a class="sidebar-link" href="/">
+      <li class="sidebar-item {{Request::is('dashboard')?'active':''}}">
+        <a class="sidebar-link" href="/dashboard">
           <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
         </a>
       </li>

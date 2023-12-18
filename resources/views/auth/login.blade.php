@@ -47,11 +47,16 @@
 											</div>
 											@enderror
 										</div>
-										<small>
+										{{-- <small>
 											Belum punya akun? <a href="/register">Daftar?</a>
-										</small>
-										<div class="text-center mt-3">
-											<button type="submit" class="btn btn-lg btn-primary">Masuk</button>
+										</small> --}}
+										<div class="d-flex justify-content-center">
+											<div class="text-center mt-3 me-3">
+												<a type="button" href="/" class="btn btn-lg btn-secondary">Kembali</a>
+											</div>
+											<div class="text-center mt-3">
+												<button type="submit" class="btn btn-lg btn-primary">Masuk</button>
+											</div>
 										</div>
 									</form>
 								</div>
