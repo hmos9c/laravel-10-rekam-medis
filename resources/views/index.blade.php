@@ -4,7 +4,6 @@
     <div class="row">
         <div class="col-md">
             <div class="card">
-                <a href="/employee" class="text-decoration-none">
                     <div class="card-body">
                         <div class="row">
                             <div class="col mt-0">
@@ -19,10 +18,8 @@
                         </div>
                         <h1 class="mt-1 mb-3">{{$employees->count()}}</h1>
                     </div>
-                </a>
             </div>
             <div class="card">
-							<a href="/bed" class="text-decoration-none">
                 <div class="card-body">
                     <div class="row">
                         <div class="col mt-0">
@@ -37,12 +34,10 @@
                     </div>
                     <h1 class="mt-1 mb-3">{{$beds->count()}}</h1>
                 </div>
-							</a>
             </div>
         </div>
         <div class="col-md">
             <div class="card">
-							<a href="/doctor" class="text-decoration-none">
                 <div class="card-body">
                     <div class="row">
                         <div class="col mt-0">
@@ -57,10 +52,8 @@
                     </div>
                     <h1 class="mt-1 mb-3">{{$doctors->count()}}</h1>
                 </div>
-							</a>
             </div>
             <div class="card">
-							<a href="/drug" class="text-decoration-none">
                 <div class="card-body">
                     <div class="row">
                         <div class="col mt-0">
@@ -75,12 +68,10 @@
                     </div>
                     <h1 class="mt-1 mb-3">{{$drugs->count()}}</h1>
                 </div>
-							</a>
             </div>
         </div>
         <div class="col-md">
             <div class="card">
-							<a href="/patient" class="text-decoration-none">
                 <div class="card-body">
                     <div class="row">
                         <div class="col mt-0">
@@ -95,10 +86,8 @@
                     </div>
                     <h1 class="mt-1 mb-3">{{$patients->count()}}</h1>
                 </div>
-							</a>
             </div>
             <div class="card">
-							<a href="/record" class="text-decoration-none">
                 <div class="card-body">
                     <div class="row">
                         <div class="col mt-0">
@@ -113,7 +102,6 @@
                     </div>
                     <h1 class="mt-1 mb-3">{{$records->count()}}</h1>
                 </div>
-							</a>
             </div>
         </div>
     </div>

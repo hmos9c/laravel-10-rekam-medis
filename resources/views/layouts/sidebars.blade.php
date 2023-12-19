@@ -15,17 +15,20 @@
         </a>
       </li>
 
+      @if (auth()->user()->role == 'Admin')
       <li class="sidebar-item {{Request::is('employee*') ? 'active' : ''}}">
         <a class="sidebar-link" href="/employee">
           <i class="align-middle" data-feather="user"></i> <span class="align-middle">Pegawai</span>
         </a>
       </li>
+      
 
       <li class="sidebar-item {{Request::is('doctor*') ? 'active' : ''}}">
         <a class="sidebar-link" href="/doctor">
           <i class="align-middle" data-feather="user-plus"></i> <span class="align-middle">Dokter</span>
         </a>
       </li>
+      @endif
 
       <li class="sidebar-item {{Request::is('patient*') ? 'active' : ''}}">
         <a class="sidebar-link" href="/patient">
@@ -33,6 +36,7 @@
         </a>
       </li>
 
+      @if (auth()->user()->role == 'Admin' || auth()->user()->role == 'Dokter')
       <li class="sidebar-header">
         Obat & Jenis
       </li>
@@ -54,7 +58,9 @@
           <i class="align-middle" data-feather="truck"></i> <span class="align-middle">Obat</span>
         </a>
       </li>
+      @endif
 
+      @if (auth()->user()->role == 'Admin' || auth()->user()->role == 'Pegawai')
       <li class="sidebar-header">
         Ruangan & Kamar
       </li>
@@ -76,16 +82,19 @@
           <i class="align-middle" data-feather="clipboard"></i> <span class="align-middle">Tempat Tidur</span>
         </a>
       </li>
+      @endif
 
       <li class="sidebar-header">
         Rekam
       </li>
 
+      @if (auth()->user()->role == 'Admin' || auth()->user()->role == 'Dokter')
       <li class="sidebar-item {{Request::is('schedule*') ? 'active' : ''}}">
         <a class="sidebar-link" href="/schedule">
           <i class="align-middle" data-feather="calendar"></i> <span class="align-middle">Jadwal</span>
         </a>
       </li>
+      @endif
 
       <li class="sidebar-item {{Request::is('record*') ? 'active' : ''}}">
         <a class="sidebar-link" href="/record">
@@ -93,6 +102,7 @@
         </a>
       </li>
 
+      @if (auth()->user()->role === 'Admin')
       <li class="sidebar-header">
         Administrasi
       </li>
@@ -102,6 +112,7 @@
           <i class="align-middle" data-feather="user-check"></i> <span class="align-middle">Pengguna</span>
         </a>
       </li>
+      @endif
     </ul>
   <div class="py-5"></div>
   </div>

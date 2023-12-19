@@ -33,6 +33,7 @@
             <th>No</th>
             <th class="d-none d-md-table-cell">Nama</th>
             <th>email</th>
+            <th class="d-none d-md-table-cell">Peran</th>
             <th class="d-none d-md-table-cell">Terakhir Diubah</th>
             <th>Aksi</th>
           </tr>
@@ -43,6 +44,7 @@
             <td>{{$loop->iteration + $users->firstItem() - 1}}</td>
             <td class="d-none d-md-table-cell">{{$user->name}}</td>
             <td>{{$user->email}}</td>
+            <td class="d-none d-md-table-cell">{{$user->role}}</td>
             <td class="d-none d-md-table-cell">{{$user->updated_at->diffForHumans()}}</td>
             <td>
               <a href="/user/{{$user->id}}" class="btn btn-info btn-sm"><i data-feather="eye"></i></a>

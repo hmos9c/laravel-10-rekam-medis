@@ -41,6 +41,7 @@ class UserController extends Controller
             'name' => 'required',
             'email' => 'required|email|unique:users',
             'password' => 'required|min:8',
+            'role' => 'required',
             'image' => 'nullable|image|file|max:1024'
         ]);
         $validator['remember_token'] = Str::random(10);
@@ -82,6 +83,7 @@ class UserController extends Controller
         $rules = [
             'name' => 'required',
             'password' => 'required|min:8',
+            'role' => 'required',
             'image' => 'nullable|image|file|max:1024',
         ];
         if($request->email != $user->email){

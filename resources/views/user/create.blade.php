@@ -56,6 +56,14 @@
             </div>
             @enderror
           </div>
+          <div class="mb-3">
+            <label for="role" class="form-label">Peran</label>
+            <select class="form-select mb-3" name="role" id="role">
+              <option value="Pegawai" selected>Pegawai</option>
+              <option value="Doctor">Dokter</option>
+              <option value="Admin">Admin</option>
+            </select>
+          </div>
           <div class="mt-3 d-flex justify-content-end">
               <a class="btn btn-secondary me-1" href="/user">Kembali</i></a>
               <button type="submit" class="btn btn-success">Tambah</button>

@@ -64,6 +64,14 @@
             @enderror
           </div>
           <div class="mb-3">
+            <label for="role" class="form-label">Peran</label>
+            <select class="form-select mb-3" name="role" id="role">
+              <option value="Pegawai" selected>Pegawai</option>
+              <option value="Dokter">Dokter</option>
+              <option value="Admin">Admin</option>
+            </select>
+          </div>
+          <div class="mb-3">
             <label for="password" class="form-label">Password</label>
             <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password" value="{{old('password', $user->password)}}">
             @error('password')

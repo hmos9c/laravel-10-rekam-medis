@@ -472,7 +472,7 @@
         &copy; Copyright <strong><span>RS CIJANTUNG</span></strong>. All Rights Reserved
       </div>
       <div class="credits">
-        Designed by <a href="">Sanas Febriyan</a>
+        Build by <a href="">Sanas Febriyan</a>
       </div>
     </div>
   </footer><!-- End Footer -->

@@ -46,6 +46,10 @@
           <label for="email" class="form-label">Email</label>
           <input type="email" class="form-control" id="email" name="email" value="{{$user->email}}" readonly>
         </div>
+        <div class="mb-3">
+          <label for="role" class="form-label">Peran</label>
+          <input type="role" class="form-control" id="role" name="role" value="{{$user->role}}" readonly>
+        </div>
         <div class="mt-3 d-flex justify-content-end">
           <a class="btn btn-secondary" href="/user">Kembali</i></a>
           <a class="btn btn-warning mx-1" href="/user/{{$user->id}}/edit">Ubah</i></a>
