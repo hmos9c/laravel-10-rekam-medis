@@ -56,6 +56,7 @@
           <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
           <li><a class="nav-link scrollto" href="#about">Profil</a></li>
           <li><a class="nav-link scrollto" href="#services">Layanan</a></li>
+          <li><a class="nav-link scrollto" href="#cta">Pendaftaran</a></li>
           <li><a class="nav-link scrollto" href="#portfolio">Fasilitas</a></li>
           <li><a class="nav-link scrollto" href="#team">Jadwal Dokter</a></li>
           <li><a class="nav-link scrollto" href="/login">Login</a></li>
@@ -226,7 +227,7 @@
       <div class="container" data-aos="zoom-in">
 
         <div class="text-center">
-          <h3>Daftar Pasien</h3>
+          <h3>Pendaftaran Pasien</h3>
           <p> Ayo Segera Daftar Pasien</p>
           <a class="cta-btn" href="/registerpatient">Daftar</a>
         </div>
