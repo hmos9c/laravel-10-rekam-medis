@@ -30,7 +30,7 @@ use App\Http\Controllers\FrontendController;
 */
 
 Route::get('/', [FrontendController::class, 'index'])->middleware('guest');
-Route::get('/registerpatient', [FrontendController::class, 'create']);
+Route::get('/registerpatient', [FrontendController::class, 'create'])->middleware('guest');
 Route::post('/registerpatient', [FrontendController::class, 'store']);
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
 
