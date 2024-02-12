@@ -18,7 +18,9 @@
         </a>
         <div class="dropdown-menu dropdown-menu-end">
           <a class="dropdown-item" href="/user/{{auth()->user()->id}}"><i class="align-middle me-1" data-feather="user"></i> Profile</a>
+          @if (auth()->user()->role == 'Admin')
           <a class="dropdown-item" href="/user/{{auth()->user()->id}}/edit"><i class="align-middle me-1" data-feather="user"></i> Ganti Password</a>
+          @endif
           <div class="dropdown-divider"></div>
           <form action="/logout" method="post">
             @csrf

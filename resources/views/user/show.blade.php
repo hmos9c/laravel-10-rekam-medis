@@ -16,8 +16,10 @@
         <h5 class="card-title mb-0">{{$user->name}}</h5>
         <div class="text-muted mb-2">{{$user->email}}</div>
         <div>
+          @if (auth()->user()->role == 'Admin')
           <a class="btn btn-warning btn-sm" href="/user/{{$user->id}}/edit"><i data-feather="edit"></i></a>
           <a class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#comfirmModal"><i data-feather="trash-2"></i></a>
+          @endif
         </div>
       </div>
       <hr class="my-0" />
@@ -51,6 +53,7 @@
           <input type="role" class="form-control" id="role" name="role" value="{{$user->role}}" readonly>
         </div>
         <div class="mt-3 d-flex justify-content-end">
+          @if (auth()->user()->role == 'Admin')
           <a class="btn btn-secondary" href="/user">Kembali</i></a>
           <a class="btn btn-warning mx-1" href="/user/{{$user->id}}/edit">Ubah</i></a>
           <a class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#comfirmModal">Hapus</a>
@@ -76,6 +79,7 @@
               </div>
             </div>
           </div>
+          @endif
         </div>
       </div>
     </div>
