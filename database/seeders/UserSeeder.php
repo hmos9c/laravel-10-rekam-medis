@@ -19,7 +19,7 @@ class UserSeeder extends Seeder
             'email' => 'sanasfebriyan@gmail.com',
             'email_verified_at' => now(),
             'password' => bcrypt('password'),
-            'role' => '1',
+            'role' => 'Admin',
             'remember_token' => Str::random(10),
         ]);
     }
