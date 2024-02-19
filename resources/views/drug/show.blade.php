@@ -14,7 +14,7 @@
           <img src="{{asset('img/default-drug.png')}}" alt="{{$drug->name}}" class="img-fluid mb-2" width="128" height="128" >
         @endif
         <h5 class="card-title mb-0">{{$drug->name}}</h5>
-        <div class="text-muted mb-2">{{$drug->type->name}}</div>
+        <div class="text-muted mb-2">{{$drug->type}}</div>
         <div>
           <a class="btn btn-secondary btn-sm" onclick="window.print()"><i data-feather="printer"></i></a>
           <a class="btn btn-warning btn-sm" href="/drug/{{$drug->id}}/edit"><i data-feather="edit"></i></a>
@@ -53,11 +53,11 @@
         </div>
         <div class="mb-3">
           <label for="type" class="form-label">Jenis</label>
-          <input type="text" class="form-control" id="type" name="type" value="{{$drug->type->name}}" readonly>
+          <input type="text" class="form-control" id="type" name="type" value="{{$drug->type}}" readonly>
         </div>
         <div class="mb-3">
           <label for="form" class="form-label">Bentuk</label>
-          <input type="text" class="form-control" id="form" name="form" value="{{$drug->form->name}}" readonly>
+          <input type="text" class="form-control" id="form" name="form" value="{{$drug->form}}" readonly>
         </div>
         <div class="mb-3">
           <label for="stock" class="form-label">Stok</label>

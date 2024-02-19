@@ -38,8 +38,8 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $validator = $request->validate([
-            'name' => 'required',
-            'email' => 'required|email|unique:users',
+            'name' => 'required|max:20',
+            'email' => 'required|email|unique:users|max:20',
             'password' => 'required|min:8',
             'role' => 'required',
             'image' => 'nullable|image|file|max:1024'
@@ -81,7 +81,7 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         $rules = [
-            'name' => 'required',
+            'name' => 'required|max:20',
             'password' => 'required|min:8',
             'role' => 'required',
             'image' => 'nullable|image|file|max:1024',

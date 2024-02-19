@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Bed;
-use App\Models\Room;
 use Illuminate\Http\Request;
 
 class BedController extends Controller
@@ -26,7 +25,6 @@ class BedController extends Controller
     {
         return view('bed.create', [
             'title' => 'Tambah Tempat Tidur',
-            'rooms' => Room::all()
         ]);
     }
 
@@ -37,7 +35,8 @@ class BedController extends Controller
     {
         $validator = $request->validate([
             'id' => 'required|min:6|max:6|unique:beds',
-            'room_id' => 'required'
+            'building' => 'required|max:20',
+            'room' => 'required|max:20'
         ]);
         Bed::create($validator);
         return redirect('/bed')->with('message', 'Tempat tidur telah ditambahkan.');
@@ -62,7 +61,6 @@ class BedController extends Controller
         return view('bed.edit', [
             'title' => 'Ubah Tempat Tidur',
             'bed' => $bed,
-            'rooms' => Room::all()
         ]);
     }
 
@@ -72,7 +70,8 @@ class BedController extends Controller
     public function update(Request $request, Bed $bed)
     {
         $rules = [
-            'room_id' => 'required',
+            'building' => 'required|max:20',
+            'room' => 'required|max:20',
         ];
         if($request->id != $bed->id){
             $rules['id'] = 'required|min:6|max:6|unique:beds';

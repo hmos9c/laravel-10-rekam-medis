@@ -39,11 +39,11 @@ class DoctorController extends Controller
         $validator = $request->validate([
             'id' => 'required|min:10|max:16|unique:doctors',
             'gender_id' => 'required',
-            'name' => 'required',
-            'specialist' => 'nullable',
+            'name' => 'required|max:20',
+            'specialist' => 'nullable|max:20',
             'phonenumber' => 'required|min:10|max:12',
             'accepted' => 'required',
-            'address' => 'required',
+            'address' => 'required|max:50',
             'image' => 'nullable|image|file|max:1024'
         ]);
         if($request->file('image')){
@@ -83,11 +83,11 @@ class DoctorController extends Controller
     {
         $rules = [
             'gender_id' => 'required',
-            'name' => 'required',
-            'specialist' => 'nullable',
+            'name' => 'required|max:20',
+            'specialist' => 'nullable|max:20',
             'phonenumber' => 'required|min:10|max:12',
             'accepted' => 'required',
-            'address' => 'nullable',
+            'address' => 'nullable|max:50',
             'image' => 'nullable|image|file|max:1024'
         ];
         if($request->id != $doctor->id){

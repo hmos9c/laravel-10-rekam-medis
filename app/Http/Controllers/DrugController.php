@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Drug;
-use App\Models\Type;
-use App\Models\Form;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -27,9 +25,7 @@ class DrugController extends Controller
     public function create()
     {
         return view('drug.create', [
-            'title' => 'Tambah Obat',
-            'types' => Type::all(),
-            'forms' => Form::all()
+            'title' => 'Tambah Obat'
         ]);
     }
 
@@ -40,11 +36,11 @@ class DrugController extends Controller
     {
         $validator = $request->validate([
             'id' => 'required|min:15|max:15|unique:drugs',
-            'type_id' => 'required',
-            'form_id' => 'required',
-            'name' => 'required',
+            'type' => 'required|max:15',
+            'form' => 'required|max:10',
+            'name' => 'required|max:20',
             'description' => 'nullable',
-            'stock' => 'nullable',
+            'stock' => 'nullable|max:4',
             'image' => 'nullable|image|file|max:1024'
         ]);
         if($request->file('image')){
@@ -73,8 +69,6 @@ class DrugController extends Controller
         return view('drug.edit', [
             'title' => 'Ubah Obat',
             'drug' => $drug,
-            'types' => Type::all(),
-            'forms' => Form::all()
         ]);
     }
 
@@ -84,11 +78,11 @@ class DrugController extends Controller
     public function update(Request $request, Drug $drug)
     {
         $rules = [
-            'type_id' => 'required',
-            'form_id' => 'required',
-            'name' => 'required',
+            'type' => 'required|max:15',
+            'form' => 'required|max:10',
+            'name' => 'required|max:20',
             'description' => 'nullable',
-            'stock' => 'nullable',
+            'stock' => 'nullable|max:4',
             'image' => 'nullable|image|file|max:1024'
         ];
         if($request->id != $drug->id){

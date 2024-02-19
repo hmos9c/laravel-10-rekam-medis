@@ -45,11 +45,11 @@ Route::resource('/user', UserController::class)->middleware('admin')->except('sh
 Route::resource('/employee', EmployeeController::class)->middleware('admin');
 Route::resource('/doctor', DoctorController::class)->middleware('admin');
 Route::resource('/patient', PatientController::class)->middleware('auth');
-Route::resource('/type', TypeController::class)->middleware('doctor');
-Route::resource('/form', FormController::class)->middleware('doctor');
+// Route::resource('/type', TypeController::class)->middleware('doctor');
+// Route::resource('/form', FormController::class)->middleware('doctor');
 Route::resource('/drug', DrugController::class)->middleware('doctor');
-Route::resource('/building', BuildingController::class)->middleware('employee');
-Route::resource('/room', RoomController::class)->middleware('employee');
+// Route::resource('/building', BuildingController::class)->middleware('employee');
+// Route::resource('/room', RoomController::class)->middleware('employee');
 Route::resource('/bed', BedController::class)->middleware('employee');
 Route::resource('/schedule', ScheduleController::class)->middleware('doctor');
 Route::resource('/record', RecordController::class)->middleware('auth');

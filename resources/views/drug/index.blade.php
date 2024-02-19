@@ -45,8 +45,8 @@
             <td>{{$loop->iteration + $drugs->firstItem() - 1}}</td>
             <td class="d-none d-md-table-cell">{{$drug->id}}</td>
             <td>{{$drug->name}}</td>
-            <td>{{$drug->type->name}}</td>
-            <td class="d-none d-md-table-cell">{{$drug->form->name}}</td>
+            <td>{{$drug->type}}</td>
+            <td class="d-none d-md-table-cell">{{$drug->form}}</td>
             <td>
               <a href="/drug/{{$drug->id}}" class="btn btn-info btn-sm"><i data-feather="eye"></i></a>
 							<a href="/drug/{{$drug->id}}/edit" class="btn btn-warning btn-sm"><i data-feather="edit"></i></a>

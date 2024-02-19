@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('drugs', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('type_id')->constrained('types');
-            $table->foreignId('form_id')->constrained('forms');
+            $table->string('type');
+            $table->string('form');
             $table->string('name');
             $table->text('description')->nullable();
             $table->string('stock')->nullable();

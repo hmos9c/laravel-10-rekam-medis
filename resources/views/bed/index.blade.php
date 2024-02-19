@@ -43,8 +43,8 @@
           <tr>
             <td>{{$loop->iteration + $beds->firstItem() - 1}}</td>
             <td>{{$bed->id}}</td>
-            <td class="d-none d-md-table-cell">{{$bed->room->building->name}}</td>
-            <td>{{$bed->room->name}}</td>
+            <td class="d-none d-md-table-cell">{{$bed->building}}</td>
+            <td>{{$bed->room}}</td>
             <td class="d-none d-md-table-cell">{{$bed->created_at->diffForHumans()}}</td>
             <td>
               <a href="/bed/{{$bed->id}}" class="btn btn-info btn-sm"><i data-feather="eye"></i></a>

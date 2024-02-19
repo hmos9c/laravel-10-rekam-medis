@@ -13,25 +13,17 @@ class Bed extends Model
     {
         $query->when($filters['search'] ?? false, function($query, $search) {
             return $query->where('id', 'like', '%' . $search . '%')
-                ->orWhereHas('room', function($query) use($search){
-                    $query->where('id', 'like', '%' . $search . '%')
-                    ->orWhere('name', 'like', '%' . $search . '%')
-                    ->orWhere('description', 'like', '%' . $search . '%')
-                    ->orWhereHas('building', function($query) use($search){
-                        $query->where('id', 'like', '%' . $search . '%')
-                        ->orWhere('name', 'like', '%' . $search . '%')
-                        ->orWhere('description', 'like', '%' . $search . '%');
-                    });
-                });
+            ->orWhere('building', 'like', '%' . $search . '%')
+            ->orWhere('room', 'like', '%' . $search . '%');
         });
     }
-    public function room()
-    {
-        return $this->belongsTo(Room::class);
-    }
-    public function record()
-    {
-        return $this->hasMany(Record::class);
-    }
+    // public function room()
+    // {
+    //     return $this->belongsTo(Room::class);
+    // }
+    // public function record()
+    // {
+    //     return $this->hasMany(Record::class);
+    // }
 
 }

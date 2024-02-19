@@ -66,50 +66,22 @@
             @enderror
           </div>
           <div class="mb-3">
-            <label for="type_id" class="form-label">Jenis</label>
-            @if ($types->count())
-              <select class="form-select mb-3" name="type_id" id="type_id">
-                @foreach ($types as $type)
-                  @if (old('type_id') == $type->id)
-                    <option value="{{$type->id}}" selected>{{$type->name}}</option>
-                    @else
-                    <option value="{{$type->id}}">{{$type->name}}</option>        
-                  @endif   
-                @endforeach
-              </select>
-            @else
-              <div class="alert alert-secondary @error('type_id') alert-danger is-invalid @enderror" id="type_id" name="type_id" role="alert">
-                Tabel jenis obat masih kosong <a href="/type" class="alert-link"><strong class="text-success">Tambah</strong> tabel jenis obat</a> terlebih dahulu.
-              </div>
-              @error('type_id')
-                <div class="invalid-feedback">
-                  {{$message}}
-                </div>
-              @enderror
-            @endif
+            <label for="type" class="form-label">Jenis</label>
+            <input type="text" class="form-control @error('type') is-invalid @enderror" id="type" name="type" value="{{old('type')}}">
+            @error('type')
+            <div class="invalid-feedback">
+              {{$message}}
+            </div>
+            @enderror
           </div>
           <div class="mb-3">
-            <label for="form_id" class="form-label">Bentuk</label>
-            @if ($forms->count())
-              <select class="form-select mb-3" name="form_id" id="form_id">
-                @foreach ($forms as $form)
-                  @if (old('form_id') == $form->id)
-                    <option value="{{$form->id}}" selected>{{$form->name}}</option>
-                  @else
-                    <option value="{{$form->id}}">{{$form->name}}</option>        
-                  @endif   
-                @endforeach
-              </select>
-            @else
-              <div class="alert alert-secondary @error('form_id') alert-danger is-invalid @enderror" id="form_id" name="form_id" role="alert">
-                Tabel bentuk obat masih kosong <a href="/form" class="alert-link"><strong class="text-success">Tambah</strong> tabel bentuk obat</a> terlebih dahulu.
-              </div>
-              @error('form_id')
-                <div class="invalid-feedback">
-                  {{$message}}
-                </div>
-              @enderror
-            @endif
+            <label for="form" class="form-label">Bentuk</label>
+            <input type="text" class="form-control @error('form') is-invalid @enderror" id="form" name="form" value="{{old('form')}}">
+            @error('form')
+            <div class="invalid-feedback">
+              {{$message}}
+            </div>
+            @enderror
           </div>
           <div class="mt-3 d-flex justify-content-end">
               <a class="btn btn-secondary me-1" href="/drug">Kembali</i></a>

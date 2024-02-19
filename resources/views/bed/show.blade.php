@@ -27,11 +27,11 @@
         </div>
         <div class="mb-3">
           <label for="building_id" class="form-label">Gedung</label>
-          <input type="text" class="form-control" id="building_id" name="building_id" value="{{$bed->room->building->name}}" readonly>
+          <input type="text" class="form-control" id="building_id" name="building_id" value="{{$bed->building}}" readonly>
         </div>
         <div class="mb-3">
           <label for="room_id" class="form-label">Ruangan</label>
-          <input type="text" class="form-control" id="room_id" name="room_id" value="{{$bed->room->name}}" readonly>
+          <input type="text" class="form-control" id="room_id" name="room_id" value="{{$bed->room}}" readonly>
         </div>
         <div class="mt-3 d-flex justify-content-end">
           <a class="btn btn-secondary" href="/bed">Kembali</i></a>

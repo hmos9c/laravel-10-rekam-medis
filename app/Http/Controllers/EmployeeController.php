@@ -39,11 +39,11 @@ class EmployeeController extends Controller
         $validator = $request->validate([
             'id' => 'required|min:10|max:18|unique:employees',
             'gender_id' => 'required',
-            'name' => 'required',
-            'position' => 'nullable',
+            'name' => 'required|max:20',
+            'position' => 'nullable||max:20',
             'phonenumber' => 'required|min:12|max:12',
             'accepted' => 'required',
-            'address' => 'nullable',
+            'address' => 'nullable|max:50',
             'image' => 'nullable|image|file|max:1024'
         ]);
         if($request->file('image')){
@@ -83,11 +83,11 @@ class EmployeeController extends Controller
     {
         $rules = [
             'gender_id' => 'required',
-            'name' => 'required',
-            'position' => 'nullable',
+            'name' => 'required|max:20',
+            'position' => 'nullable|max:20',
             'phonenumber' => 'required|min:12|max:12',
             'accepted' => 'required',
-            'address' => 'nullable',
+            'address' => 'nullable|max:50',
             'image' => 'nullable|image|file|max:1024'
         ];
         if($request->id != $employee->id){

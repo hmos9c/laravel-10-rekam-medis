@@ -73,28 +73,22 @@
             @enderror
           </div>
           <div class="mb-3">
-            <label for="type_id" class="form-label">Jenis</label>
-            <select class="form-select mb-3" name="type_id" id="type_id">
-              @foreach ($types as $type)
-                @if (old('type_id', $drug->type_id) == $type->id)
-                  <option value="{{$type->id}}" selected>{{$type->name}}</option>
-                  @else
-                  <option value="{{$type->id}}">{{$type->name}}</option>        
-                @endif   
-              @endforeach
-            </select>
+            <label for="type" class="form-label">Jenis</label>
+            <input type="text" class="form-control @error('type') is-invalid @enderror" id="type" name="type" value="{{old('type', $drug->type)}}">
+            @error('type')
+            <div class="invalid-feedback">
+              {{$message}}
+            </div>
+            @enderror
           </div>
           <div class="mb-3">
-            <label for="form_id" class="form-label">Bentuk</label>
-            <select class="form-select mb-3" name="form_id" id="form_id">
-              @foreach ($forms as $form)
-                @if (old('form_id', $drug->form_id) == $form->id)
-                  <option value="{{$form->id}}" selected>{{$form->name}}</option>
-                  @else
-                  <option value="{{$form->id}}">{{$form->name}}</option>        
-                @endif   
-              @endforeach
-            </select>
+            <label for="form" class="form-label">Bentuk</label>
+            <input type="text" class="form-control @error('form') is-invalid @enderror" id="form" name="form" value="{{old('form', $drug->form)}}">
+            @error('form')
+            <div class="invalid-feedback">
+              {{$message}}
+            </div>
+            @enderror
           </div>
           <div class="mb-3">
             <label for="stock" class="form-label">Stok</label>

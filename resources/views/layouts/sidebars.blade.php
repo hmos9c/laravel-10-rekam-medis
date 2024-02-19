@@ -41,7 +41,7 @@
         Obat & Jenis
       </li>
 
-      <li class="sidebar-item {{Request::is('type*') ? 'active' : ''}}">
+      {{-- <li class="sidebar-item {{Request::is('type*') ? 'active' : ''}}">
         <a class="sidebar-link" href="/type">
           <i class="align-middle" data-feather="package"></i> <span class="align-middle">Jenis Obat</span>
         </a>
@@ -51,7 +51,7 @@
         <a class="sidebar-link" href="/form">
           <i class="align-middle" data-feather="pie-chart"></i> <span class="align-middle">Bentuk & Sediaan</span>
         </a>
-      </li>
+      </li> --}}
 
       <li class="sidebar-item {{Request::is('drug*') ? 'active' : ''}}">
         <a class="sidebar-link" href="/drug">
@@ -65,7 +65,7 @@
         Ruangan & Kamar
       </li>
 
-      <li class="sidebar-item {{Request::is('building*') ? 'active' : ''}}">
+      {{-- <li class="sidebar-item {{Request::is('building*') ? 'active' : ''}}">
         <a class="sidebar-link" href="/building">
           <i class="align-middle" data-feather="home"></i> <span class="align-middle">Gedung</span>
         </a>
@@ -75,7 +75,7 @@
         <a class="sidebar-link" href="/room">
           <i class="align-middle" data-feather="check-square"></i> <span class="align-middle">Ruangan</span>
         </a>
-      </li>
+      </li> --}}
 
       <li class="sidebar-item {{Request::is('bed*') ? 'active' : ''}}">
         <a class="sidebar-link" href="/bed">

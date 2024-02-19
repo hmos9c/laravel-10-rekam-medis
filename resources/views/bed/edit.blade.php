@@ -34,16 +34,22 @@
             @enderror
           </div>
           <div class="mb-3">
-            <label for="room_id" class="form-label">Bentuk</label>
-            <select class="form-select mb-3" name="room_id" id="room_id">
-              @foreach ($rooms as $room)
-                @if (old('room_id', $bed->room_id) == $room->id)
-                  <option value="{{$room->id}}" selected>{{$room->name}}</option>
-                  @else
-                  <option value="{{$room->id}}">{{$room->name}}</option>        
-                @endif   
-              @endforeach
-            </select>
+            <label for="building" class="form-label">Gedung</label>
+            <input type="text" class="form-control @error('building') is-invalid @enderror" id="building" name="building" value="{{old('building', $bed->building)}}">
+            @error('building')
+            <div class="invalid-feedback">
+              {{$message}}
+            </div>
+            @enderror
+          </div>
+          <div class="mb-3">
+            <label for="room" class="form-label">Ruangan</label>
+            <input type="text" class="form-control @error('room') is-invalid @enderror" id="room" name="room" value="{{old('room', $bed->room)}}">
+            @error('room')
+            <div class="invalid-feedback">
+              {{$message}}
+            </div>
+            @enderror
           </div>
           <div class="mt-3 d-flex justify-content-end">
               <a class="btn btn-secondary me-1" href="/bed">Kembali</i></a>

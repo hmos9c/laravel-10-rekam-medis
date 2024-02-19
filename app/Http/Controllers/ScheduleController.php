@@ -40,7 +40,7 @@ class ScheduleController extends Controller
         $validator = $request->validate([
             'doctor_id' => 'required|min:10|max:16|exists:doctors,id',
             'day_id' => 'required',
-            'time' => 'required',
+            'time' => 'required|max:20',
         ]);
         Schedule::create($validator);
         return redirect('/schedule')->with('message', 'Jadwal dokter telah ditambahkan.'); 
@@ -78,7 +78,7 @@ class ScheduleController extends Controller
         $validator = $request->validate([
             'doctor_id' => 'required|min:10|max:16|exists:doctors,id',
             'day_id' => 'required',
-            'time' => 'required',
+            'time' => 'required|max:20',
         ]);
         Schedule::where('id', $schedule->id)->update($validator);
         return redirect('/schedule')->with('message', 'Jadwal dokter telah diubah.');  

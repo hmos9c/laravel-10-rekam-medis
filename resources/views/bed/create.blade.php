@@ -20,27 +20,22 @@
             @enderror
           </div>
           <div class="mb-3">
-            <label for="room_id" class="form-label">Ruangan</label>
-            @if ($rooms->count())
-              <select class="form-select mb-3" name="room_id" id="room_id">
-                @foreach ($rooms as $room)
-                  @if (old('room_id') == $room->id)
-                    <option value="{{$room->id}}" selected>{{$room->name}}</option>
-                  @else
-                    <option value="{{$room->id}}">{{$room->name}}</option>        
-                  @endif   
-                @endforeach
-              </select>
-            @else
-              <div class="alert alert-secondary @error('room_id') alert-danger is-invalid @enderror" id="room_id" name="room_id" role="alert">
-                Tabel gedung masih kosong <a href="/room" class="alert-link"><strong class="text-success">Tambah</strong> tabel gedung</a> terlebih dahulu.
-              </div>
-              @error('room_id')
-                <div class="invalid-feedback">
-                  {{$message}}
-                </div>
-              @enderror
-            @endif
+            <label for="building" class="form-label">Gedung</label>
+            <input type="text" class="form-control @error('id') is-invalid @enderror" id="building" name="building" autofocus value="{{old('building')}}">
+            @error('building')
+            <div class="invalid-feedback">
+              {{$message}}
+            </div>
+            @enderror
+          </div>
+          <div class="mb-3">
+            <label for="room" class="form-label">Ruangan</label>
+            <input type="text" class="form-control @error('id') is-invalid @enderror" id="room" name="room" autofocus value="{{old('room')}}">
+            @error('room')
+            <div class="invalid-feedback">
+              {{$message}}
+            </div>
+            @enderror
           </div>
           <div class="mt-3 d-flex justify-content-end">
               <a class="btn btn-secondary me-1" href="/bed">Kembali</i></a>
