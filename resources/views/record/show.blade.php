@@ -1,6 +1,6 @@
 @extends('layouts.index')
 @section('main')
-<h3 class="mb-3"><strong>Tambah</strong> Rekam Pasien</h3>
+<h3 class="mb-3"><strong>Detail</strong> Rekam Pasien</h3>
 <div class="row">
   <div class="col-md-4 col-xl-3">
     <div class="card mb-3">
