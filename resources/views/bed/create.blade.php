@@ -21,7 +21,7 @@
           </div>
           <div class="mb-3">
             <label for="building" class="form-label">Gedung</label>
-            <input type="text" class="form-control @error('id') is-invalid @enderror" id="building" name="building" autofocus value="{{old('building')}}">
+            <input type="text" class="form-control @error('building') is-invalid @enderror" id="building" name="building" autofocus value="{{old('building')}}">
             @error('building')
             <div class="invalid-feedback">
               {{$message}}
@@ -30,7 +30,7 @@
           </div>
           <div class="mb-3">
             <label for="room" class="form-label">Ruangan</label>
-            <input type="text" class="form-control @error('id') is-invalid @enderror" id="room" name="room" autofocus value="{{old('room')}}">
+            <input type="text" class="form-control @error('room') is-invalid @enderror" id="room" name="room" autofocus value="{{old('room')}}">
             @error('room')
             <div class="invalid-feedback">
               {{$message}}
