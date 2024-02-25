@@ -76,7 +76,7 @@
           </div>
           <div class="col-md">
             <div class="mb-3">
-              <label for="height" class="form-label">Tinggi Badan</label>
+              <label for="height" class="form-label">Tinggi Badan (cm)</label>
               <input type="number" class="form-control @error('height') is-invalid @enderror" id="height" name="height" value="{{old('height')}}">
               @error('height')
               <div class="invalid-feedback">
@@ -96,7 +96,7 @@
           </div>
           <div class="col-md">
             <div class="mb-3">
-              <label for="weight" class="form-label">Berat Badan</label>
+              <label for="weight" class="form-label">Berat Badan (kg)</label>
               <input type="number" class="form-control @error('weight') is-invalid @enderror" id="weight" name="weight" value="{{old('weight')}}">
               @error('weight')
               <div class="invalid-feedback">
@@ -105,7 +105,7 @@
               @enderror
             </div>
             <div class="mb-3">
-              <label for="tension" class="form-label">Tekanan Darah</label>
+              <label for="tension" class="form-label">Tekanan Darah (mmHg)</label>
               <input type="number" class="form-control @error('tension') is-invalid @enderror" id="tension" name="tension" value="{{old('tension')}}">
               @error('tension')
               <div class="invalid-feedback">

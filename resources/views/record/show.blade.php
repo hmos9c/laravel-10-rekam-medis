@@ -99,7 +99,7 @@
           <div class="col-md">
             <div class="mb-3">
               <label for="height" class="form-label">Tinggi Badan</label>
-              <input type="number" class="form-control" id="height" name="height" value="{{$record->height}}" readonly>
+              <input type="text" class="form-control" id="height" name="height" value="{{$record->height}} cm" readonly>
             </div>
             <div class="mb-3">
               <label for="blood" class="form-label">Golongan Darah</label>
@@ -109,11 +109,11 @@
           <div class="col-md">
             <div class="mb-3">
               <label for="weight" class="form-label">Berat Badan</label>
-              <input type="number" class="form-control" id="weight" name="weight" value="{{$record->weight}}" readonly>
+              <input type="text" class="form-control" id="weight" name="weight" value="{{$record->weight}} kg" readonly>
             </div>
             <div class="mb-3">
               <label for="tension" class="form-label">Tekanan Darah</label>
-              <input type="number" class="form-control" id="tension" name="tension" value="{{$record->tension}}" readonly>
+              <input type="text" class="form-control" id="tension" name="tension" value="{{$record->tension}} mmHg" readonly>
             </div>
           </div>
           <div class="mb-3">
