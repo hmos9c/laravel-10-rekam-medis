@@ -40,7 +40,7 @@ class EmployeeController extends Controller
             'id' => 'required|min:10|max:20|unique:employees',
             'gender_id' => 'required',
             'name' => 'required|max:20',
-            'position' => 'nullable||max:20',
+            'position' => 'nullable|max:20',
             'phonenumber' => 'required|min:12|max:12',
             'accepted' => 'required',
             'address' => 'nullable|max:50',
