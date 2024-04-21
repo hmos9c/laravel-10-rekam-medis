@@ -34,7 +34,7 @@ class BedController extends Controller
     public function store(Request $request)
     {
         $validator = $request->validate([
-            'id' => 'required|min:6|max:6|unique:beds',
+            'id' => 'required|min:1|max:20|unique:beds',
             'building' => 'required|max:20',
             'room' => 'required|max:20'
         ]);
@@ -74,7 +74,7 @@ class BedController extends Controller
             'room' => 'required|max:20',
         ];
         if($request->id != $bed->id){
-            $rules['id'] = 'required|min:6|max:6|unique:beds';
+            $rules['id'] = 'required|min:1|max:20|unique:beds';
         }
         $validator = $request->validate($rules);
         try {

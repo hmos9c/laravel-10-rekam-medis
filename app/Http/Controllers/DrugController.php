@@ -35,7 +35,7 @@ class DrugController extends Controller
     public function store(Request $request)
     {
         $validator = $request->validate([
-            'id' => 'required|min:15|max:15|unique:drugs',
+            'id' => 'required|min:15|max:20|unique:drugs',
             'type' => 'required|max:15',
             'form' => 'required|max:10',
             'name' => 'required|max:20',
@@ -86,7 +86,7 @@ class DrugController extends Controller
             'image' => 'nullable|image|file|max:1024'
         ];
         if($request->id != $drug->id){
-            $rules['id'] = 'required|min:15|max:15|unique:drugs';
+            $rules['id'] = 'required|min:15|max:20|unique:drugs';
         }
         $validator = $request->validate($rules);
         try {

@@ -17,7 +17,7 @@
         <div class="text-muted mb-2">{{$schedule->doctor->specialist}}</div>
         <div>
           <a class="btn btn-secondary btn-sm" onclick="window.print()"><i data-feather="printer"></i></a>
-          <a class="btn btn-warning btn-sm" href="/doctor/{{$schedule->id}}/edit"><i data-feather="edit"></i></a>
+          <a class="btn btn-warning btn-sm" href="/schedule/{{$schedule->id}}/edit"><i data-feather="edit"></i></a>
           <a class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#comfirmModal"><i data-feather="trash-2"></i></a>
         </div>
       </div>

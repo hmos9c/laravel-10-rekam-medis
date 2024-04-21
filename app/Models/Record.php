@@ -61,28 +61,14 @@ class Record extends Model
                     $query->where('id', 'like', '%' . $search . '%')
                     ->orWhere('name', 'like', '%' . $search . '%')
                     ->orWhere('description', 'like', '%' . $search . '%')
-                    ->orWhere('stock', 'like', '%' . $search . '%')
-                    ->orWhereHas('type', function($query) use($search){
-                        $query->where('name', 'like', '%' . $search . '%')
-                        ->orWhere('description', 'like', '%' . $search . '%');
-                    })
-                    ->orWhereHas('form', function($query) use($search){
-                        $query->where('name', 'like', '%' . $search . '%')
-                        ->orWhere('description', 'like', '%' . $search . '%');
-                    });
+                    ->orWhere('type', 'like', '%' . $search . '%')
+                    ->orWhere('form', 'like', '%' . $search . '%')
+                    ->orWhere('stock', 'like', '%' . $search . '%');
                 })
                 ->orWhereHas('bed', function($query) use($search){
                     $query->where('id', 'like', '%' . $search . '%')
-                    ->orWhereHas('room', function($query) use($search){
-                        $query->where('id', 'like', '%' . $search . '%')
-                        ->orWhere('name', 'like', '%' . $search . '%')
-                        ->orWhere('description', 'like', '%' . $search . '%')
-                        ->orWhereHas('building', function($query) use($search){
-                            $query->where('id', 'like', '%' . $search . '%')
-                            ->orWhere('name', 'like', '%' . $search . '%')
-                            ->orWhere('description', 'like', '%' . $search . '%');
-                        });
-                    });
+                    ->orWhere('building', 'like', '%' . $search . '%')
+                    ->orWhere('room', 'like', '%' . $search . '%');
                 })
                 ->orWhereHas('care', function($query) use($search){
                     $query->where('id', 'like', '%' . $search . '%')

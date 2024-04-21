@@ -37,7 +37,7 @@ class EmployeeController extends Controller
     public function store(Request $request)
     {
         $validator = $request->validate([
-            'id' => 'required|min:10|max:18|unique:employees',
+            'id' => 'required|min:10|max:20|unique:employees',
             'gender_id' => 'required',
             'name' => 'required|max:20',
             'position' => 'nullable||max:20',
@@ -91,7 +91,7 @@ class EmployeeController extends Controller
             'image' => 'nullable|image|file|max:1024'
         ];
         if($request->id != $employee->id){
-            $rules['id'] = 'required|min:10|max:18|unique:employees';
+            $rules['id'] = 'required|min:10|max:20|unique:employees';
         }
         $validator = $request->validate($rules);
         if($request->file('image')){

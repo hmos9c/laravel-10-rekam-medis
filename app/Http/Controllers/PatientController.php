@@ -43,7 +43,7 @@ class PatientController extends Controller
     public function store(Request $request)
     {
         $validator = $request->validate([
-            'id' => 'required|min:16|max:16|unique:patients',
+            'id' => 'required|min:16|max:20|unique:patients',
             'gender_id' => 'required',
             'religion_id' => 'required',
             'status_id' => 'required',
@@ -56,7 +56,7 @@ class PatientController extends Controller
             'dateofentry' => 'required',
             'outdate' => 'nullable',
             'phonenumber' => 'required|min:12|max:12',
-            'email' => 'nullable|email|unique:patients',
+            'email' => 'nullable|email|max:100|unique:patients',
             'image' => 'image|file|max:1024'
         ]);
         if($request->file('image')){
@@ -113,10 +113,10 @@ class PatientController extends Controller
             'image' => 'nullable|image|file|max:1024'
         ];
         if($request->id != $patient->id){
-            $rules['id'] = 'required|min:16|max:16|unique:patients';
+            $rules['id'] = 'required|min:16|max:20|unique:patients';
         }
         if($request->email != $patient->email){
-            $rules['email'] = 'unique:patients';
+            $rules['email'] = 'unique:patients|max:100';
         }
         $validator = $request->validate($rules);
         try {
