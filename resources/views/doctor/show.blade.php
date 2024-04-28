@@ -17,8 +17,10 @@
         <div class="text-muted mb-2">{{$doctor->specialist}}</div>
         <div>
           <a class="btn btn-secondary btn-sm" href="/doctorprint/{{$doctor->id}}" target="_blank"><i data-feather="printer"></i></a>
+          @if (auth()->user()->role == 'Admin')
           <a class="btn btn-warning btn-sm" href="/doctor/{{$doctor->id}}/edit"><i data-feather="edit"></i></a>
           <a class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#comfirmModal"><i data-feather="trash-2"></i></a>
+          @endif
         </div>
       </div>
       <hr class="my-0" />
@@ -69,8 +71,10 @@
         </div>
         <div class="mt-3 d-flex justify-content-end">
           <a class="btn btn-secondary" href="/doctor">Kembali</i></a>
+          @if (auth()->user()->role == 'Admin')
           <a class="btn btn-warning mx-1" href="/doctor/{{$doctor->id}}/edit">Ubah</i></a>
           <a class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#comfirmModal">Hapus</a>
+          @endif
           <div class="modal fade" id="comfirmModal" tabindex="-1" aria-labelledby="comfirmModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
               <div class="modal-content">

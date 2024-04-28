@@ -18,7 +18,9 @@
     <div class="card flex-fill">
       <div class="card-header">
         <h5 class="card-title mb-0">Tabel Dokter</h5>
+        @if (auth()->user()->role == 'Admin')
         <a href="/doctor/create" class="btn btn-success my-3">Tambah</a>
+        @endif
         <a href="/doctorprint" target="_blank" class="btn btn-secondary my-3">Print</a>
         <form action="/doctor">
           <div class="input-group">
@@ -49,12 +51,14 @@
             <td class="d-none d-md-table-cell">{{$doctor->phonenumber}}</td>
             <td>
               <a href="/doctor/{{$doctor->id}}" class="btn btn-info btn-sm"><i data-feather="eye"></i></a>
+              @if (auth()->user()->role == 'Admin')
 							<a href="/doctor/{{$doctor->id}}/edit" class="btn btn-warning btn-sm"><i data-feather="edit"></i></a>
               <form action="/doctor/{{$doctor->id}}" method="post" class="d-inline">
                 @method('delete')
                 @csrf
                 <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Anda yakin menghapus?')"><i data-feather="trash-2"></i></button>
               </form>
+              @endif
             </td>
           </tr>
           @endforeach
@@ -63,7 +67,13 @@
       @else
       <div class="d-flex justify-content-center mb-2">
         <div class="alert alert-secondary col-11" role="alert">
-          Tabel dokter masih kosong <a href="/doctor/create" class="alert-link">klik tombol <strong class="text-success">Tambah</strong></a> untuk menambah dokter.
+          Tabel dokter masih kosong 
+          @if (auth()->user()->role == 'Admin')
+          <a href="/doctor/create" class="alert-link">klik tombol <strong class="text-success">Tambah</strong></a>
+          @else
+            Hanya Admin 
+          @endif
+           untuk menambah dokter.
         </div>
       </div>
       @endif
