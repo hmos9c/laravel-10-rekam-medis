@@ -106,23 +106,23 @@
               <div class="row">
                 <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="100">
                   <i class="bx bx-receipt"></i>
-                  <h4>Apotek</h4>
-                  <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip</p>
+                  <h4>Farmasi</h4>
+                  <p>Pengelolaan obat mulai dari penyimpanan, peracikan, dan penyediaan obat yang telah memenuhi standar farmasi.</p>
                 </div>
                 <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="200">
                   <i class="bx bx-cube-alt"></i>
-                  <h4>Ambulans</h4>
-                  <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt</p>
+                  <h4>Radiologi</h4>
+                  <p>Standar waktu pelaporan hasil pemeriksaan radiologi untuk memenuhi dan meningkatkan mutu pelayanan ,kecepatan dan keakuratan penegakkan diagnosa dokter kepada pasien</p>
                 </div>
                 <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="300">
                   <i class="bx bx-images"></i>
                   <h4>X-Ray</h4>
-                  <p>Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut maiores omnis facere</p>
+                  <p>Standar waktu pelaporan hasil pemeriksaan Thorax Foto 1 jam</p>
                 </div>
                 <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="400">
                   <i class="bx bx-shield"></i>
                   <h4>Laboratorium</h4>
-                  <p>Expedita veritatis consequuntur nihil tempore laudantium vitae denat pacta</p>
+                  <p>Merupakan sarana pelayanan kesehatan yang melaksanakan pengukuran, penetapan dan pengujian untuk penentuan jenis penyakit</p>
                 </div>
               </div>
             </div><!-- End .content-->
@@ -146,7 +146,7 @@
             <div class="icon-box" data-aos="fade-up">
               <div class="icon"><i class="bx bxl-dribbble"></i></div>
               <h4 class="title"><a>Instalasi Gawat Darurat (IGD)</a></h4>
-              <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
+              <p class="description">IGD atau Instalasi Gawat Darurat adalah layanan yang disediakan untuk kebutuhan pasien yang dalam kondisi gawat darurat dan harus segera dibawa ke rumah sakit untuk mendapatkan penanganan darurat yang cepat.</p>
             </div>
           </div>
 
@@ -154,7 +154,7 @@
             <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
               <div class="icon"><i class="bx bx-file"></i></div>
               <h4 class="title"><a>RAWAT INAP</a></h4>
-              <p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
+              <p class="description">Rawat inap atau opname adalah istilah yang berarti proses perangkapan pasien oleh tenaga kesehatan profesional akibat penyakit tertentu, di mana pasien diinapkan di suatu ruangan di rumah sakit.</p>
             </div>
           </div>
 
@@ -162,7 +162,7 @@
             <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
               <div class="icon"><i class="bx bx-tachometer"></i></div>
               <h4 class="title"><a>RAWAT JALAN</a></h4>
-              <p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>
+              <p class="description">Instalasi Rawat Jalan merupakan salah satu instalasi di rumah sakit yang memberikan pelayanan rawat jalan kepada pasien, sesuai dengan spesialisasi yang dibutuhkannya, Pelayanan tersebut  meliputi pemeriksaan, pengobatan dan tindakan medis sesuai dengan kondisi pasien dan jenis penyakit yang dialaminya.</p>
             </div>
           </div>
 
@@ -170,7 +170,7 @@
             <div class="icon-box" data-aos="fade-up" data-aos-delay="300">
               <div class="icon"><i class="bx bx-world"></i></div>
               <h4 class="title"><a>KESEHATAN ANAK</a></h4>
-              <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
+              <p class="description">Kesehatan anak keadaan sempurna secara fisik, mental dan sosial, tidak hanya bebas dari penyakit dan kecacatan.</p>
             </div>
           </div>
 

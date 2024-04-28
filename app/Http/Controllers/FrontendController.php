@@ -31,7 +31,7 @@ class FrontendController extends Controller
     public function create()
     {
         return view('frontend.create', [
-            'title' => 'Daftar Pasien',
+            'title' => 'Daftar Pasien | RS Cijantung',
             'genders' => Gender::all(),
             'religions' => Religion::all(),
             'statuses' => Status::all(),
@@ -42,7 +42,7 @@ class FrontendController extends Controller
     public function store(Request $request)
     {
         $validator = $request->validate([
-            'id' => 'required|min:16|max:16|unique:patients',
+            'id' => 'required|min:16|max:20|unique:patients',
             'gender_id' => 'required',
             'religion_id' => 'required',
             'status_id' => 'required',

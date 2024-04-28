@@ -21,8 +21,9 @@
           <i class="align-middle" data-feather="user"></i> <span class="align-middle">Pegawai</span>
         </a>
       </li>
-      
+      @endif
 
+      @if (auth()->user()->role == 'Admin' || auth()->user()->role == 'Dokter')
       <li class="sidebar-item {{Request::is('doctor*') ? 'active' : ''}}">
         <a class="sidebar-link" href="/doctor">
           <i class="align-middle" data-feather="user-plus"></i> <span class="align-middle">Dokter</span>

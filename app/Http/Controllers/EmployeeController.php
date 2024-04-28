@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Employee;
 use App\Models\Gender;
+use App\Models\Employee;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 

@@ -19,7 +19,7 @@
       <div class="card-header">
         <h5 class="card-title mb-0">Tabel Pasien</h5>
         <a href="/patient/create" class="btn btn-success my-3">Tambah</a>
-        <a onclick="window.print()" class="btn btn-secondary my-3">Print</a>
+        <a href="/patientprint" target="_blank" class="btn btn-secondary my-3">Print</a>
         <form action="/patient">
           <div class="input-group">
             <input type="text" class="form-control" placeholder="Cari.." autofocus name="search" value="{{ request('search') }}">

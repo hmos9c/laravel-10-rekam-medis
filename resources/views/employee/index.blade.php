@@ -13,7 +13,7 @@
       <div class="card-header">
         <h5 class="card-title mb-0">Tabel Pegawai</h5>
         <a href="/employee/create" class="btn btn-success my-3">Tambah</a>
-        <a onclick="window.print();" class="btn btn-secondary my-3">Print</a>
+        <a href="/employeeprint" target="_blank" class="btn btn-secondary my-3">Print</a>
         <form action="/employee">
           <div class="input-group">
             <input type="text" class="form-control" placeholder="Cari.." autofocus name="search" value="{{ request('search') }}">
