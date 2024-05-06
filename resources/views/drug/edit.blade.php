@@ -15,7 +15,7 @@
           <img id="img-preview" src="{{asset('img/default-drug.png')}}" class="img-preview img-fluid mb-2"  width="128" height="128">
           @endif
         </div>
-        <form action="/drug/{{$drug->id}}" method="post" enctype="multipart/form-data">
+        <form action="/drug/{{$drug->id_drug}}" method="post" enctype="multipart/form-data">
           @method('put')
           @csrf
         <input type="hidden" name="oldImage" value="{{$drug->image}}">
@@ -46,9 +46,9 @@
       </div>
       <div class="card-body">
           <div class="mb-3">
-            <label for="id" class="form-label">Nomor Obat</label>
-            <input type="number" class="form-control @error('id') is-invalid @enderror" id="id" name="id" value="{{old('id', $drug->id)}}">
-            @error('id')
+            <label for="id_drug" class="form-label">Nomor Obat</label>
+            <input type="number" class="form-control @error('id_drug') is-invalid @enderror" id="id_drug" name="id_drug" value="{{old('id_drug', $drug->id_drug)}}">
+            @error('id_drug')
             <div class="invalid-feedback">
               {{$message}}
             </div>
@@ -94,6 +94,15 @@
             <label for="stock" class="form-label">Stok</label>
             <input type="number" class="form-control @error('stock') is-invalid @enderror" id="stock" name="stock" value="{{old('stock', $drug->stock)}}">
             @error('stock')
+            <div class="invalid-feedback">
+              {{$message}}
+            </div>
+            @enderror
+          </div>
+          <div class="mb-3">
+            <label for="expired" class="form-label">Kadaluarsa</label>
+            <input type="date" class="form-control @error('expired') is-invalid @enderror" id="expired" name="expired" value="{{old('expired', $drug->expired)}}">
+            @error('expired')
             <div class="invalid-feedback">
               {{$message}}
             </div>

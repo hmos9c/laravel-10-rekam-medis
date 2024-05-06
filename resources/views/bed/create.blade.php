@@ -11,9 +11,9 @@
         <form action="/bed" method="post">
           @csrf
           <div class="mb-3">
-            <label for="id" class="form-label">No Tempat Tidur</label>
-            <input type="number" class="form-control @error('id') is-invalid @enderror" id="id" name="id" autofocus value="{{old('id')}}">
-            @error('id')
+            <label for="id_bed" class="form-label">No Tempat Tidur</label>
+            <input type="number" class="form-control @error('id_bed') is-invalid @enderror" id="id_bed" name="id_bed" autofocus value="{{old('id_bed')}}">
+            @error('id_bed')
             <div class="invalid-feedback">
               {{$message}}
             </div>
@@ -46,15 +46,4 @@
     </div>
   </div>
 </div>
-<script>
-  function previewImage(){
-    const image = document.querySelector('#image');
-    const imgPreview = document.querySelector('#img-preview'); 
-    const oFReader = new FileReader();
-    oFReader.readAsDataURL(image.files[0]);
-    oFReader.onload = function(oFEvent){
-      imgPreview.src = oFEvent.target.result;
-    }
-  }
-</script>
 @endsection

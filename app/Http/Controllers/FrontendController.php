@@ -42,7 +42,7 @@ class FrontendController extends Controller
     public function store(Request $request)
     {
         $validator = $request->validate([
-            'id' => 'required|min:16|max:20|unique:patients',
+            'id_patient' => 'required|min:16|max:20|unique:patients',
             'gender_id' => 'required',
             'religion_id' => 'required',
             'status_id' => 'required',
@@ -52,8 +52,6 @@ class FrontendController extends Controller
             'dateofbirth' => 'required',
             'address' => 'required',
             'job' => 'nullable',
-            'dateofentry' => 'required',
-            'outdate' => 'nullable',
             'phonenumber' => 'required|min:12|max:12',
             'email' => 'nullable|email|unique:patients',
             'image' => 'image|file|max:1024'

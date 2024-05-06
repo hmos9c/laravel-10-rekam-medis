@@ -22,8 +22,8 @@
       </div>
       <div class="card-body">
         <div class="mb-3">
-          <label for="id" class="form-label">No Tempat Tidur</label>
-          <input type="number" class="form-control" id="id" name="id" value="{{$bed->id}}" readonly>
+          <label for="id_bed" class="form-label">No Tempat Tidur</label>
+          <input type="number" class="form-control" id="id_bed" name="id_bed" value="{{$bed->id_bed}}" readonly>
         </div>
         <div class="mb-3">
           <label for="building_id" class="form-label">Gedung</label>
@@ -35,7 +35,7 @@
         </div>
         <div class="mt-3 d-flex justify-content-end">
           <a class="btn btn-secondary" href="/bed">Kembali</i></a>
-          <a class="btn btn-warning mx-1" href="/bed/{{$bed->id}}/edit">Ubah</i></a>
+          <a class="btn btn-warning mx-1" href="/bed/{{$bed->id_bed}}/edit">Ubah</i></a>
           <a class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#comfirmModal">Hapus</a>
           <div class="modal fade" id="comfirmModal" tabindex="-1" aria-labelledby="comfirmModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
@@ -46,7 +46,7 @@
                 </div>
                 <div class="modal-body d-flex justify-content-center">
                   <p class="text-success">Anda yakin menghapus?
-                    <form action="/bed/{{$bed->id}}" method="post" class="mx-1">
+                    <form action="/bed/{{$bed->id_bed}}" method="post" class="mx-1">
                       @method('delete')
                       @csrf
                       <button type="submit" class="badge bg-danger text-white border-0">Ya</button>

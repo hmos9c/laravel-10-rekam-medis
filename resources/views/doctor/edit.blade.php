@@ -15,7 +15,7 @@
           <img id="img-preview" src="{{asset('img/default.png')}}" class="img-preview img-fluid rounded-circle mb-2"  width="128" height="128">
           @endif
         </div>
-        <form action="/doctor/{{$doctor->id}}" method="post" enctype="multipart/form-data">
+        <form action="/doctor/{{$doctor->id_doctor}}" method="post" enctype="multipart/form-data">
           @method('put')
           @csrf
         <input type="hidden" name="oldImage" value="{{$doctor->image}}">
@@ -46,9 +46,9 @@
       </div>
       <div class="card-body">
           <div class="mb-3">
-            <label for="id" class="form-label">No Dokter</label>
-            <input type="number" class="form-control @error('id') is-invalid @enderror" id="id" name="id" value="{{old('id', $doctor->id)}}">
-            @error('id')
+            <label for="id_doctor" class="form-label">No Dokter</label>
+            <input type="number" class="form-control @error('id_doctor') is-invalid @enderror" id="id_doctor" name="id_doctor" value="{{old('id_doctor', $doctor->id_doctor)}}">
+            @error('id_doctor')
             <div class="invalid-feedback">
               {{$message}}
             </div>
@@ -103,13 +103,23 @@
             <label for="gender_id" class="form-label">Jenis Kelamin</label>
             <select class="form-select mb-3" name="gender_id" id="gender_id">
               @foreach ($genders as $gender)
-                @if (old('gender_id', $doctor->gender_id) == $gender->id)
-                  <option value="{{$gender->id}}" selected>{{$gender->gender}}</option>
+                @if (old('gender_id', $doctor->gender_id) == $gender->id_gender)
+                  <option value="{{$gender->id_gender}}" selected>{{$gender->gender}}</option>
                   @else
-                  <option value="{{$gender->id}}">{{$gender->gender}}</option>        
+                  <option value="{{$gender->id_gender}}">{{$gender->gender}}</option>        
                 @endif   
               @endforeach
             </select>
+          </div>
+          <div class="mb-3">
+            <input type="hidden" name="oldDocument" value="{{$doctor->document}}">
+            <label for="document" class="form-label">Unggah Dokumen</label>
+            <input class="form-control @error('document') is-invalid @enderror" type="file" id="document" name="document">
+            @error('document')
+            <div class="invalid-feedback">
+              {{$message}}
+            </div>
+            @enderror
           </div>
           <div class="mt-3 d-flex justify-content-end">
               <a class="btn btn-secondary me-1" href="/doctor">Kembali</i></a>

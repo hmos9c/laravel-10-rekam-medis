@@ -50,7 +50,7 @@
           @foreach ($drugs as $drug)
           <tr>
             <td>{{$loop->iteration}}</td>
-            <td>{{$drug->id}}</td>
+            <td>{{$drug->id_drug}}</td>
             <td>{{$drug->name}}</td>
             <td>{{$drug->type}}</td>
             <td>{{$drug->form}}</td>

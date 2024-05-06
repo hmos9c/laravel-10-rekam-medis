@@ -8,11 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Employee extends Model
 {
     use HasFactory;
+    protected $primaryKey = 'id_employee';
     protected $guarded = [''];
     public function scopeFilter($query, $filters)
     {
         $query->when($filters['search'] ?? false, function($query, $search) {
-            return $query->where('id', 'like', '%' . $search . '%')
+            return $query->where('id_employee', 'like', '%' . $search . '%')
                 ->orWhere('name', 'like', '%' . $search . '%')
                 ->orWhere('position', 'like', '%' . $search . '%')
                 ->orWhere('phonenumber', 'like', '%' . $search . '%')
@@ -25,6 +26,6 @@ class Employee extends Model
     }
     public function gender()
     {
-        return $this->belongsTo(Gender::class);
+        return $this->belongsTo(Gender::class, 'gender_id', 'id_gender');
     }
 }

@@ -8,14 +8,14 @@
         <h5 class="card-title mb-0">Data</h5>
       </div>
       <div class="card-body">
-        <form action="/record/{{$record->id}}" method="post">
+        <form action="/record/{{$record->id_record}}" method="post">
         @method('put')
         @csrf
         <div class="row">
           <div class="mb-3">
-            <label for="id" class="form-label">No Rakam Pasien</label>
-            <input type="number" class="form-control @error('id') is-invalid @enderror" id="id" name="id" value="{{old('id', $record->id)}}">
-            @error('id')
+            <label for="dateofentry" class="form-label">Tanggal dan Jam Masuk</label>
+            <input type="datetime-local" class="form-control @error('dateofentry') is-invalid @enderror" id="dateofentry" name="dateofentry" value="{{old('dateofentry', $record->dateofentry)}}">
+            @error('dateofentry')
             <div class="invalid-feedback">
               {{$message}}
             </div>
@@ -24,7 +24,7 @@
           <div class="col-md">
              <div class="mb-3">
               <label for="patient_id" class="form-label">No Pasien</label>
-              <input type="number" class="form-control" id="patient_id" name="patient_id" value="{{$record->patient->id}}" readonly>
+              <input type="number" class="form-control" id="patient_id" name="patient_id" value="{{$record->patient->id_patient}}" readonly>
             </div>
           </div>
           <div class="col-md">
@@ -32,10 +32,10 @@
               <label for="doctor_id" class="form-label">Dokter</label>
               <select class="form-select mb-3" name="doctor_id" id="doctor_id">
                 @foreach ($doctors as $doctor)
-                  @if (old('doctor_id', $record->doctor->id) == $doctor->id)
-                    <option value="{{$doctor->id}}" selected>{{$doctor->name}}</option>
+                  @if (old('doctor_id', $record->doctor->id_doctor) == $doctor->id_doctor)
+                    <option value="{{$doctor->id_doctor}}" selected>{{$doctor->name}}</option>
                     @else
-                    <option value="{{$doctor->id}}">{{$doctor->name}}</option>        
+                    <option value="{{$doctor->id_doctor}}">{{$doctor->name}}</option>        
                   @endif   
                 @endforeach
               </select>
@@ -118,15 +118,54 @@
             @enderror
           </div>
           <div class="mb-3">
-            <label for="drug_id" class="form-label">Obat</label>
+            <label for="drug_id" class="form-label">Obat 1</label>
             <select class="form-select mb-3" name="drug_id" id="drug_id">
               @foreach ($drugs as $drug)
-                @if (old('drug_id', $record->drug->id) == $drug->id)
-                  <option value="{{$drug->id}}" selected>{{$drug->name}}</option>
+                @if (old('drug_id', $record->drug->id_drug) == $drug->id_drug)
+                  <option value="{{$drug->id_drug}}" selected>{{$drug->name}}</option>
                   @else
-                  <option value="{{$drug->id}}">{{$drug->name}}</option>        
+                  <option value="{{$drug->id_drug}}">{{$drug->name}}</option>        
                 @endif   
               @endforeach
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="drug2" class="form-label">Obat 2</label>
+            <select class="form-select mb-3" name="drug2" id="drug2">
+              @foreach ($drugs as $drug)
+                @if (old('drug2', $record->drug->id_drug) == $drug->id_drug)
+                  <option value="{{$record->drug2}}" selected>{{$record->drug2}}</option>
+                  @else
+                  <option value="{{$drug->name}}">{{$drug->name}}</option>        
+                @endif   
+              @endforeach
+              <option value="Tidak Ada">Tidak Ada</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="drug3" class="form-label">Obat 3</label>
+            <select class="form-select mb-3" name="drug3" id="drug3">
+              @foreach ($drugs as $drug)
+                @if (old('drug3', $record->drug->id_drug) == $drug->id_drug)
+                  <option value="{{$record->drug3}}" selected>{{$record->drug3}}</option>
+                  @else
+                  <option value="{{$drug->name}}">{{$drug->name}}</option>        
+                @endif   
+              @endforeach
+              <option value="Tidak Ada">Tidak Ada</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="drug4" class="form-label">Obat 4</label>
+            <select class="form-select mb-3" name="drug4" id="drug4">
+              @foreach ($drugs as $drug)
+                @if (old('drug4', $record->drug->id_drug) == $drug->id_drug)
+                  <option value="{{$record->drug4}}" selected>{{$record->drug4}}</option>
+                  @else
+                  <option value="{{$drug->name}}">{{$drug->name}}</option>        
+                @endif   
+              @endforeach
+              <option value="Tidak Ada">Tidak Ada</option>
             </select>
           </div>
           <div class="col-md">
@@ -134,10 +173,10 @@
               <label for="care_id" class="form-label">Rawat</label>
               <select class="form-select mb-3" name="care_id" id="care_id">
                 @foreach ($cares as $care)
-                  @if (old('care_id', $record->care->id) == $care->id)
-                    <option value="{{$care->id}}" selected>{{$care->care}}</option>
+                  @if (old('care_id', $record->care->id_care) == $care->id_care)
+                    <option value="{{$care->id_care}}" selected>{{$care->care}}</option>
                     @else
-                    <option value="{{$care->id}}">{{$care->care}}</option>        
+                    <option value="{{$care->id_care}}">{{$care->care}}</option>        
                   @endif   
                 @endforeach
               </select>
@@ -146,10 +185,10 @@
               <label for="bed_id" class="form-label">No Tempat Tidur</label>
               <select class="form-select mb-3" name="bed_id" id="bed_id">
                 @foreach ($beds as $bed)
-                  @if (old('bed_id', $record->bed->id) == $bed->id)
-                    <option value="{{$bed->id}}" selected>{{$bed->id}}</option>
+                  @if (old('bed_id', $record->bed->id_bed) == $bed->id_bed)
+                    <option value="{{$bed->id_bed}}" selected>{{$bed->room}}</option>
                     @else
-                    <option value="{{$bed->id}}">{{$bed->id}}</option>        
+                    <option value="{{$bed->id_bed}}">{{$bed->room}}</option>        
                   @endif   
                 @endforeach
               </select>
@@ -166,8 +205,8 @@
               @enderror
             </div>
             <div class="mb-3">
-              <label for="outdate" class="form-label">Tanggal Keluar</label>
-              <input type="date" class="form-control @error('outdate') is-invalid @enderror" id="outdate" name="outdate" value="{{old('outdate', $record->outdate)}}">
+              <label for="outdate" class="form-label">Tanggal dan Jam Keluar</label>
+              <input type="datetime-local" class="form-control @error('outdate') is-invalid @enderror" id="outdate" name="outdate" value="{{old('outdate', $record->outdate)}}">
               @error('outdate')
               <div class="invalid-feedback">
                 {{$message}}

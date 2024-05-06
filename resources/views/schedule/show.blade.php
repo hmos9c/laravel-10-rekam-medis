@@ -16,8 +16,8 @@
         <h5 class="card-title mb-0">{{$schedule->doctor->name}}</h5>
         <div class="text-muted mb-2">{{$schedule->doctor->specialist}}</div>
         <div>
-          <a class="btn btn-secondary btn-sm" href="/scheduleprint/{{$schedule->id}}" target="_blank"><i data-feather="printer"></i></a>
-          <a class="btn btn-warning btn-sm" href="/schedule/{{$schedule->id}}/edit"><i data-feather="edit"></i></a>
+          <a class="btn btn-secondary btn-sm" href="/scheduleprint/{{$schedule->id_schedule}}" target="_blank"><i data-feather="printer"></i></a>
+          <a class="btn btn-warning btn-sm" href="/schedule/{{$schedule->id_schedule}}/edit"><i data-feather="edit"></i></a>
           <a class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#comfirmModal"><i data-feather="trash-2"></i></a>
         </div>
       </div>
@@ -46,8 +46,8 @@
               <input type="text" class="form-control" id="day" name="day" value="{{$schedule->day->name}}" readonly>
             </div>
             <div class="mb-3">
-              <label for="id" class="form-label">No Dokter</label>
-              <input type="number" class="form-control" id="id" name="id" value="{{$schedule->doctor->id}}" readonly>
+              <label for="id_doctor" class="form-label">No Dokter</label>
+              <input type="number" class="form-control" id="id_doctor" name="id_doctor" value="{{$schedule->doctor->id_doctor}}" readonly>
             </div>
             <div class="mb-3">
               <label for="phonenumber" class="form-label">No Handphone</label>
@@ -73,7 +73,7 @@
             </div>
             <div class="mb-3">
               <label for="gender" class="form-label">Jenis Kelamin</label>
-              <input type="text" class="form-control" id="gande" name="gande" value="{{$schedule->doctor->gender->gender}}" readonly>
+              <input type="text" class="form-control" id="gander" name="gander" value="{{$schedule->doctor->gender->gender}}" readonly>
             </div>
           </div>
         </div>
@@ -83,7 +83,7 @@
         </div>
         <div class="mt-3 d-flex justify-content-end">
           <a class="btn btn-secondary" href="/schedule">Kembali</i></a>
-          <a class="btn btn-warning mx-1" href="/schedule/{{$schedule->id}}/edit">Ubah</i></a>
+          <a class="btn btn-warning mx-1" href="/schedule/{{$schedule->id_schedule}}/edit">Ubah</i></a>
           <a class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#comfirmModal">Hapus</a>
           <div class="modal fade" id="comfirmModal" tabindex="-1" aria-labelledby="comfirmModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
@@ -94,7 +94,7 @@
                 </div>
                 <div class="modal-body d-flex justify-content-center">
                   <p class="text-success">Anda yakin menghapus?
-                    <form action="/schedule/{{$schedule->id}}" method="post" class="mx-1">
+                    <form action="/schedule/{{$schedule->id_schedule}}" method="post" class="mx-1">
                       @method('delete')
                       @csrf
                       <button type="submit" class="badge bg-danger text-white border-0">Ya</button>

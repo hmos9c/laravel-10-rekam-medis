@@ -8,8 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Nationality extends Model
 {
     use HasFactory;
+    protected $primaryKey = 'id_nationality';
     public function patient()
     {
-        return $this->hasMany(Patient::class);
+        return $this->hasMany(Patient::class, 'nationality_id', 'id_nationality');
     }
 }

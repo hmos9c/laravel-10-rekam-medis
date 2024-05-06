@@ -44,16 +44,18 @@
             <th>Pasien</th>
             <th>Doker</th>
             <th>Tanggal Masuk</th>
+            <th>Jam Masuk</th>
           </tr>
         </thead>
         <tbody>
           @foreach ($records as $record)
           <tr>
             <td>{{$loop->iteration}}</td>
-            <td>{{$record->id}}</td>
+            <td>{{$record->id_record}}</td>
             <td>{{$record->patient->name}}</td>
             <td>{{$record->doctor->name}}</td>
-            <td>{{$record->patient->dateofentry}}</td>
+            <td>{{\Carbon\Carbon::parse($record->dateofentry)->format('d/m/Y')}}</td>
+            <td>{{\Carbon\Carbon::parse($record->dateofentry)->format('H:m')}}</td>
           </tr>
           @endforeach
         </tbody>

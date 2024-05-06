@@ -43,17 +43,15 @@
             <th>NIK</th>
             <th>Nama</th>
             <th>No Handphone</th>
-            <th>Tanggal Masuk</th>
           </tr>
         </thead>
         <tbody>
           @foreach ($patients as $patient)
           <tr>
             <td>{{$loop->iteration}}</td>
-            <td>{{$patient->id}}</td>
+            <td>{{$patient->id_patient}}</td>
             <td>{{$patient->name}}</td>
             <td>{{$patient->phonenumber}}</td>
-            <td>{{$patient->dateofentry}}</td>
           </tr>
           @endforeach
         </tbody>

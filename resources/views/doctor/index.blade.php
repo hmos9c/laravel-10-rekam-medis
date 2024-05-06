@@ -34,6 +34,7 @@
         <thead>
           <tr>
             <th>No</th>
+            <th class="d-none d-md-table-cell">Foto</th>
             <th class="d-none d-md-table-cell">No Dokter</th>
             <th>Nama</th>
             <th>Spesialis</th>
@@ -45,15 +46,22 @@
           @foreach ($doctors as $doctor)
           <tr>
             <td>{{$loop->iteration + $doctors->firstItem() - 1}}</td>
-            <td class="d-none d-md-table-cell">{{$doctor->id}}</td>
+            <td class="d-none d-md-table-cell">
+              @if ($doctor->image)
+              <img src="{{asset('storage/' . $doctor->image)}}" alt="{{$doctor->name}}" width="50" height="50" />
+              @else
+              <img src="{{asset('img/default.png')}}" alt="{{$doctor->name}}" class="img-fluid rounded-circle mb-2" width="50" height="50" >
+              @endif
+            </td>
+            <td class="d-none d-md-table-cell">{{$doctor->id_doctor}}</td>
             <td>{{$doctor->name}}</td>
             <td>{{$doctor->specialist}}</td>
             <td class="d-none d-md-table-cell">{{$doctor->phonenumber}}</td>
             <td>
-              <a href="/doctor/{{$doctor->id}}" class="btn btn-info btn-sm"><i data-feather="eye"></i></a>
+              <a href="/doctor/{{$doctor->id_doctor}}" class="btn btn-info btn-sm"><i data-feather="eye"></i></a>
               @if (auth()->user()->role == 'Admin')
-							<a href="/doctor/{{$doctor->id}}/edit" class="btn btn-warning btn-sm"><i data-feather="edit"></i></a>
-              <form action="/doctor/{{$doctor->id}}" method="post" class="d-inline">
+							<a href="/doctor/{{$doctor->id_doctor}}/edit" class="btn btn-warning btn-sm"><i data-feather="edit"></i></a>
+              <form action="/doctor/{{$doctor->id_doctor}}" method="post" class="d-inline">
                 @method('delete')
                 @csrf
                 <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Anda yakin menghapus?')"><i data-feather="trash-2"></i></button>

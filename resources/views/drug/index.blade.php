@@ -43,14 +43,14 @@
           @foreach ($drugs as $drug)
           <tr>
             <td>{{$loop->iteration + $drugs->firstItem() - 1}}</td>
-            <td class="d-none d-md-table-cell">{{$drug->id}}</td>
+            <td class="d-none d-md-table-cell">{{$drug->id_drug}}</td>
             <td>{{$drug->name}}</td>
             <td>{{$drug->type}}</td>
             <td class="d-none d-md-table-cell">{{$drug->form}}</td>
             <td>
-              <a href="/drug/{{$drug->id}}" class="btn btn-info btn-sm"><i data-feather="eye"></i></a>
-							<a href="/drug/{{$drug->id}}/edit" class="btn btn-warning btn-sm"><i data-feather="edit"></i></a>
-              <form action="/drug/{{$drug->id}}" method="post" class="d-inline">
+              <a href="/drug/{{$drug->id_drug}}" class="btn btn-info btn-sm"><i data-feather="eye"></i></a>
+							<a href="/drug/{{$drug->id_drug}}/edit" class="btn btn-warning btn-sm"><i data-feather="edit"></i></a>
+              <form action="/drug/{{$drug->id_drug}}" method="post" class="d-inline">
                 @method('delete')
                 @csrf
                 <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Anda yakin menghapus?')"><i data-feather="trash-2"></i></button>

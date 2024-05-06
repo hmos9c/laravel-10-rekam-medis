@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('patients', function (Blueprint $table) {
-            $table->id();
+            $table->id('id_patient');
             $table->foreignId('gender_id')->constrained('genders');
             $table->foreignId('religion_id')->constrained('religions');
             $table->foreignId('status_id')->constrained('statuses');
@@ -22,7 +22,6 @@ return new class extends Migration
             $table->date('dateofbirth');
             $table->string('address');
             $table->string('job')->nullable();
-            $table->date('dateofentry');
             $table->string('phonenumber');
             $table->string('email')->nullable();
             $table->string('image')->nullable();

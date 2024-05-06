@@ -63,7 +63,15 @@
         <div class="row">
           <div class="mb-2">
             <label for="id">No Rekam Pasien :</label>
-            <input type="number" id="id" name="id" value="{{$record->id}}" readonly>
+            <input type="number" id="id" name="id" value="{{$record->id_record}}" readonly>
+          </div>
+          <div class="mb-3">
+            <label for="dateofentry">Tanggal Masuk</label>
+            <input type="text" id="dateofentry" name="dateofentry" value="{{ \Carbon\Carbon::parse($record->dateofentry)->format('d/m/Y')}}" readonly>
+          </div>
+          <div class="mb-3">
+            <label for="dateofentry">Jam Masuk</label>
+            <input type="text" id="dateofentry" name="dateofentry" value="{{ \Carbon\Carbon::parse($record->dateofentry)->format('H:m')}}" readonly>
           </div>
           <div class="col-md">
              <div class="mb-2">
@@ -160,7 +168,7 @@
             </div>
             <div class="mb-2">
               <label for="bed_id">No Tempat Tidur :</label>
-              <input type="number" id="bed_id" name="bed_id" value="{{$record->bed->id}}" readonly>
+              <input type="number" id="bed_id" name="bed_id" value="{{$record->bed->name}}" readonly>
             </div>
           </div>
           <div class="col-md">
@@ -170,7 +178,11 @@
             </div>
             <div class="mb-2">
               <label for="outdate">Tanggal Keluar :</label>
-              <input type="date" id="outdate" name="outdate" value="{{$record->outdate}}" readonly>
+              <input type="date" id="outdate" name="outdate" value="{{ \Carbon\Carbon::parse($record->outdate)->format('d/m/Y')}}" readonly>
+            </div>
+            <div class="mb-2">
+              <label for="outdate">Jam Keluar :</label>
+              <input type="date" id="outdate" name="outdate" value="{{ \Carbon\Carbon::parse($record->outdate)->format('H:m')}}" readonly>
             </div>
           </div>
         </div>

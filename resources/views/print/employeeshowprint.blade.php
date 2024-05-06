@@ -62,7 +62,7 @@
       <div class="card-body">
         <div class="mb-2">
           <label for="id" >No Pegawai :</label>
-          <input type="id"  id="id" name="id" value="{{$employee->id}}" readonly>
+          <input type="id"  id="id" name="id" value="{{$employee->id_employee}}" readonly>
         </div>
         <div class="mb-2">
           <label for="name">Nama :</label>

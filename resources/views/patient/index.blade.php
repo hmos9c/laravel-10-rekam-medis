@@ -32,10 +32,10 @@
         <thead>
           <tr>
             <th>No</th>
+            <th class="d-none d-md-table-cell">Foto</th>
             <th class="d-none d-md-table-cell">NIK</th>
             <th>Nama</th>
             <th>No Handphone</th>
-            <th class="d-none d-md-table-cell">Tanggal Masuk</th>
             <th>Aksi</th>
           </tr>
         </thead>
@@ -43,14 +43,20 @@
           @foreach ($patients as $patient)
           <tr>
             <td>{{$loop->iteration + $patients->firstItem() - 1}}</td>
-            <td class="d-none d-md-table-cell">{{$patient->id}}</td>
+            <td class="d-none d-md-table-cell">
+              @if ($patient->image)
+              <img src="{{asset('storage/' . $patient->image)}}" alt="{{$patient->name}}" width="50" height="50" />
+            @else
+              <img src="{{asset('img/default.png')}}" alt="{{$patient->name}}" class="img-fluid rounded-circle mb-2" width="50" height="50" >
+            @endif
+            </td>
+            <td class="d-none d-md-table-cell">{{$patient->id_patient}}</td>
             <td>{{$patient->name}}</td>
             <td>{{$patient->phonenumber}}</td>
-            <td class="d-none d-md-table-cell">{{$patient->dateofentry}}</td>
             <td>
-              <a href="/patient/{{$patient->id}}" class="btn btn-info btn-sm"><i data-feather="eye"></i></a>
-							<a href="/patient/{{$patient->id}}/edit" class="btn btn-warning btn-sm"><i data-feather="edit"></i></a>
-              <form action="/patient/{{$patient->id}}" method="post" class="d-inline">
+              <a href="/patient/{{$patient->id_patient}}" class="btn btn-info btn-sm"><i data-feather="eye"></i></a>
+							<a href="/patient/{{$patient->id_patient}}/edit" class="btn btn-warning btn-sm"><i data-feather="edit"></i></a>
+              <form action="/patient/{{$patient->id_patient}}" method="post" class="d-inline">
                 @method('delete')
                 @csrf
                 <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Anda yakin menghapus?')"><i data-feather="trash-2"></i></button>

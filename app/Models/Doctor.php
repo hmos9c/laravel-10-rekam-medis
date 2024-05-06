@@ -8,11 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Doctor extends Model
 {
     use HasFactory;
+    protected $primaryKey = 'id_doctor';
     protected $guarded = [''];
     public function scopeFilter($query, $filters)
     {
         $query->when($filters['search'] ?? false, function($query, $search) {
-            return $query->where('id', 'like', '%' . $search . '%')
+            return $query->where('id_doctor', 'like', '%' . $search . '%')
                 ->orWhere('name', 'like', '%' . $search . '%')
                 ->orWhere('specialist', 'like', '%' . $search . '%')
                 ->orWhere('phonenumber', 'like', '%' . $search . '%')
@@ -25,14 +26,14 @@ class Doctor extends Model
     }
     public function gender()
     {
-        return $this->belongsTo(Gender::class);
+        return $this->belongsTo(Gender::class, 'gender_id', 'id_gender');
     }
     public function schedule()
     {
-        return $this->hasMany(Schedule::class);
+        return $this->hasMany(Schedule::class, 'doctor_id', 'id_doctor');
     }
     public function record()
     {
-        return $this->hasMany(Record::class);
+        return $this->hasMany(Record::class, 'doctor_id', 'id_doctor');
     }
 }

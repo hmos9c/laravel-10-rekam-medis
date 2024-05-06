@@ -30,9 +30,9 @@
       </div>
       <div class="card-body">
           <div class="mb-3">
-            <label for="id" class="form-label">No Pegawai</label>
-            <input type="number" class="form-control @error('id') is-invalid @enderror" id="id" name="id" autofocus value="{{old('id')}}">
-            @error('id')
+            <label for="id_employee" class="form-label">No Pegawai</label>
+            <input type="number" class="form-control @error('id_employee') is-invalid @enderror" id="id_employee" name="id_employee" autofocus value="{{old('id_employee')}}">
+            @error('id_employee')
             <div class="invalid-feedback">
               {{$message}}
             </div>
@@ -87,10 +87,10 @@
             <label for="gender_id" class="form-label">Jenis Kelamin</label>
             <select class="form-select mb-3" name="gender_id" id="gender_id">
               @foreach ($genders as $gender)
-                @if (old('gender_id') == $gender->id)
-                  <option value="{{$gender->id}}" selected>{{$gender->gender}}</option>
+                @if (old('gender_id') == $gender->id_gender)
+                  <option value="{{$gender->id_gender}}" selected>{{$gender->gender}}</option>
                   @else
-                  <option value="{{$gender->id}}">{{$gender->gender}}</option>        
+                  <option value="{{$gender->id_gender}}">{{$gender->gender}}</option>        
                 @endif   
               @endforeach
             </select>

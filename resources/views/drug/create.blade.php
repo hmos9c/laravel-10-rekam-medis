@@ -30,9 +30,9 @@
       </div>
       <div class="card-body">
           <div class="mb-3">
-            <label for="id" class="form-label">No Obat</label>
-            <input type="number" class="form-control @error('id') is-invalid @enderror" id="id" name="id" autofocus value="{{old('id')}}">
-            @error('id')
+            <label for="id_drug" class="form-label">No Obat</label>
+            <input type="number" class="form-control @error('id_drug') is-invalid @enderror" id="id_drug" name="id_drug" autofocus value="{{old('id_drug')}}">
+            @error('id_drug')
             <div class="invalid-feedback">
               {{$message}}
             </div>
@@ -78,6 +78,15 @@
             <label for="form" class="form-label">Bentuk</label>
             <input type="text" class="form-control @error('form') is-invalid @enderror" id="form" name="form" value="{{old('form')}}">
             @error('form')
+            <div class="invalid-feedback">
+              {{$message}}
+            </div>
+            @enderror
+          </div>
+          <div class="mb-3">
+            <label for="expired" class="form-label">Kadaluarsa</label>
+            <input type="date" class="form-control @error('expired') is-invalid @enderror" id="expired" name="expired" value="{{old('expired')}}">
+            @error('expired')
             <div class="invalid-feedback">
               {{$message}}
             </div>

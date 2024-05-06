@@ -34,7 +34,7 @@ class BedController extends Controller
     public function store(Request $request)
     {
         $validator = $request->validate([
-            'id' => 'required|min:1|max:20|unique:beds',
+            'id_bed' => 'required|min:1|max:20|unique:beds',
             'building' => 'required|max:20',
             'room' => 'required|max:20'
         ]);
@@ -73,12 +73,12 @@ class BedController extends Controller
             'building' => 'required|max:20',
             'room' => 'required|max:20',
         ];
-        if($request->id != $bed->id){
-            $rules['id'] = 'required|min:1|max:20|unique:beds';
+        if($request->id_bed != $bed->id_bed){
+            $rules['id_bed'] = 'required|min:1|max:20|unique:beds';
         }
         $validator = $request->validate($rules);
         try {
-            Bed::where('id', $bed->id)->update($validator);
+            Bed::where('id_bed', $bed->id_bed)->update($validator);
         } catch (\Throwable $th) {
             return redirect('/bed')->with('error', 'Tempat tidur sedang digunakan ditabel rekam, tidak dapat mengubah tempat tidur!');
         }       
@@ -91,7 +91,7 @@ class BedController extends Controller
     public function destroy(Bed $bed)
     {
         try {
-            Bed::destroy($bed->id);
+            Bed::destroy($bed->id_bed);
         } catch (\Throwable $th) {
             return redirect('/bed')->with('error', 'Tempat tidur sedang digunakan ditabel rekam, tidak dapat menghapus tempat tidur!');
         }

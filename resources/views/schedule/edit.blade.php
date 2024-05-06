@@ -8,12 +8,12 @@
         <h5 class="card-title mb-0">Data</h5>
       </div>
       <div class="card-body">
-        <form action="/schedule/{{$schedule->id}}" method="post">
+        <form action="/schedule/{{$schedule->id_schedule}}" method="post">
           @method('put')
           @csrf
           <div class="mb-3">
             <label for="doctor_id" class="form-label">No Dokter</label>
-            <input type="text" class="form-control @error('doctor_id') is-invalid @enderror" id="doctor_id" name="doctor_id" autofocus value="{{old('doctor_id', $schedule->doctor->id)}}">
+            <input type="text" class="form-control @error('doctor_id') is-invalid @enderror" id="doctor_id" name="doctor_id" autofocus value="{{old('doctor_id', $schedule->doctor->id_doctor)}}">
             @error('doctor_id')
             <div class="invalid-feedback">
               {{$message}}
@@ -33,10 +33,10 @@
             <label for="day_id" class="form-label">Hari</label>
               <select class="form-select mb-3" name="day_id" id="day_id">
                 @foreach ($days as $day)
-                  @if (old('day_id', $schedule->day->id) == $day->id)
-                    <option value="{{$day->id}}" selected>{{$day->name}}</option>
+                  @if (old('day_id', $schedule->day->id) == $day->id_day)
+                    <option value="{{$day->id_day}}" selected>{{$day->name}}</option>
                   @else
-                    <option value="{{$day->id}}">{{$day->name}}</option>        
+                    <option value="{{$day->id_day}}">{{$day->name}}</option>        
                   @endif   
                 @endforeach
               </select>

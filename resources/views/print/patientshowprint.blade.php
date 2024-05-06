@@ -64,7 +64,7 @@
           <div class="col-md">
             <div class="mb-2">
               <label for="id">NIK :</label>
-              <input type="number" id="id" name="id" value="{{$patient->id}}" readonly>
+              <input type="number" id="id" name="id" value="{{$patient->id_patient}}" readonly>
             </div>
             <div class="mb-2">
               <label for="name">Nama :</label>
@@ -99,10 +99,6 @@
             <div class="mb-2">
               <label for="nationality">nationality :</label>
               <input type="text" id="nationality" name="nationality" value="{{$patient->nationality->nationality}}" readonly>
-            </div>
-            <div class="mb-2">
-              <label for="dateofentry">Tanggal Masuk :</label>
-              <input type="date" id="dateofentry" name="dateofentry" value="{{$patient->dateofentry}}" readonly>
             </div>
             <div class="mb-2">
               <label for="phonenumber">No Handphone :</label>

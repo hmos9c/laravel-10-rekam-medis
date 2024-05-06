@@ -42,9 +42,9 @@
             <td class="d-none d-md-table-cell">{{$schedule->time}}</td>
             <td>{{$schedule->day->name}}</td>
             <td>
-              <a href="/schedule/{{$schedule->id}}" class="btn btn-info btn-sm"><i data-feather="eye"></i></a>
-							<a href="/schedule/{{$schedule->id}}/edit" class="btn btn-warning btn-sm"><i data-feather="edit"></i></a>
-              <form action="/schedule/{{$schedule->id}}" method="post" class="d-inline">
+              <a href="/schedule/{{$schedule->id_schedule}}" class="btn btn-info btn-sm"><i data-feather="eye"></i></a>
+							<a href="/schedule/{{$schedule->id_schedule}}/edit" class="btn btn-warning btn-sm"><i data-feather="edit"></i></a>
+              <form action="/schedule/{{$schedule->id_schedule}}" method="post" class="d-inline">
                 @method('delete')
                 @csrf
                 <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Anda yakin menghapus?')"><i data-feather="trash-2"></i></button>

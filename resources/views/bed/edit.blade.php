@@ -21,13 +21,13 @@
         <h5 class="card-title mb-0">Data</h5>
       </div>
       <div class="card-body">
-        <form action="/bed/{{$bed->id}}" method="post">
+        <form action="/bed/{{$bed->id_bed}}" method="post">
           @method('put')
           @csrf
           <div class="mb-3">
-            <label for="id" class="form-label">Nomor Tempat Tidur</label>
-            <input type="number" class="form-control @error('id') is-invalid @enderror" id="id" name="id" value="{{old('id', $bed->id)}}">
-            @error('id')
+            <label for="id_bed" class="form-label">Nomor Tempat Tidur</label>
+            <input type="number" class="form-control @error('id_bed') is-invalid @enderror" id="id_bed" name="id_bed" value="{{old('id_bed', $bed->id_bed)}}">
+            @error('id_bed')
             <div class="invalid-feedback">
               {{$message}}
             </div>
@@ -60,15 +60,4 @@
     </div>
   </div>
 </div>
-<script>
-  function previewImage(){
-    const image = document.querySelector('#image');
-    const imgPreview = document.querySelector('#img-preview'); 
-    const oFReader = new FileReader();
-    oFReader.readAsDataURL(image.files[0]);
-    oFReader.onload = function(oFEvent){
-      imgPreview.src = oFEvent.target.result;
-    }
-  }
-</script>
 @endsection

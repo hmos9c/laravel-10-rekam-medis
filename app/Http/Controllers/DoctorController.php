@@ -37,17 +37,21 @@ class DoctorController extends Controller
     public function store(Request $request)
     {
         $validator = $request->validate([
-            'id' => 'required|min:10|max:19|unique:doctors',
+            'id_doctor' => 'required|min:10|max:19|unique:doctors',
             'gender_id' => 'required',
             'name' => 'required|max:20',
             'specialist' => 'nullable|max:20',
             'phonenumber' => 'required|min:10|max:12',
             'accepted' => 'required',
             'address' => 'required|max:50',
-            'image' => 'nullable|image|file|max:1024'
+            'image' => 'nullable|image|file|max:1024',
+            'document' => 'nullable|mimes:doc,docx,pdf,xlx,xlsx,ppt,pptx|file|max:5024'
         ]);
         if($request->file('image')){
             $validator['image'] = $request->file('image')->store('doctor-image');
+        }
+        if($request->file('document')){
+            $validator['document'] = $request->file('document')->store('doctor-document');
         }
         Doctor::create($validator);
         return redirect('/doctor')->with('message', 'Dokter telah ditambahkan.');
@@ -88,10 +92,11 @@ class DoctorController extends Controller
             'phonenumber' => 'required|min:10|max:12',
             'accepted' => 'required',
             'address' => 'nullable|max:50',
-            'image' => 'nullable|image|file|max:1024'
+            'image' => 'nullable|image|file|max:1024',
+            'document' => 'nullable|mimes:doc,docx,pdf,xlx,xlsx,ppt,pptx|file|max:5024'
         ];
-        if($request->id != $doctor->id){
-            $rules['id'] = 'required|min:10|max:19|unique:doctors';
+        if($request->id_doctor != $doctor->id_doctor){
+            $rules['id_doctor'] = 'required|min:10|max:19|unique:doctors';
         }
         $validator = $request->validate($rules);
         if($request->file('image')){
@@ -100,8 +105,14 @@ class DoctorController extends Controller
             }
             $validator['image'] = $request->file('image')->store('doctor-image');
         }
+        if($request->file('document')){
+            if($request->oldDocument){
+                Storage::delete($request->oldDocument);
+            }
+            $validator['document'] = $request->file('document')->store('doctor-document');
+        }
         try {
-            Doctor::where('id', $doctor->id)->update($validator);
+            Doctor::where('id_doctor', $doctor->id_doctor)->update($validator);
         } catch (\Throwable $th) {
             return redirect('/doctor')->with('error', 'Dokter sedang digunakan ditabel lain, tidak dapat mengubah dokter!');
         }  
@@ -117,7 +128,10 @@ class DoctorController extends Controller
             if($doctor->image){
                 Storage::delete($doctor->image);
             }
-            Doctor::destroy($doctor->id);
+            if($doctor->document){
+                Storage::delete($doctor->document);
+            }
+            Doctor::destroy($doctor->id_doctor);
         } catch (\Throwable $th) {
             return redirect('/doctor')->with('error', 'Dokter sedang digunakan ditabel lain, tidak dapat menghapus dokter!');
         }

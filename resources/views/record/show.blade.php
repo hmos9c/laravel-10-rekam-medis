@@ -16,8 +16,8 @@
         <h5 class="card-title mb-0">{{$record->patient->name}}</h5>
         <div class="text-muted mb-2">{{$record->patient->phonenumber}}</div>
         <div>
-          <a class="btn btn-secondary btn-sm" href="/recordprint/{{$record->id}}" target="_blank"><i data-feather="printer"></i></a>
-          <a class="btn btn-warning btn-sm" href="/record/{{$record->id}}/edit"><i data-feather="edit"></i></a>
+          <a class="btn btn-secondary btn-sm" href="/recordprint/{{$record->id_record}}" target="_blank"><i data-feather="printer"></i></a>
+          <a class="btn btn-warning btn-sm" href="/record/{{$record->id_record}}/edit"><i data-feather="edit"></i></a>
           <a class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#comfirmModal"><i data-feather="trash-2"></i></a>
         </div>
       </div>
@@ -41,9 +41,17 @@
       <div class="card-body">
         <div class="row">
           <div class="mb-3">
-            <label for="id" class="form-label">No Rekam Pasien</label>
-            <input type="number" class="form-control" id="id" name="id" value="{{$record->id}}" readonly>
+            <label for="id_record" class="form-label">No Rekam Pasien</label>
+            <input type="number" class="form-control" id="id_record" name="id_record" value="{{$record->id_record}}" readonly>
           </div>
+            <div class="mb-3">
+              <label for="dateofentry" class="form-label">Tanggal Masuk</label>
+              <input type="text" class="form-control" id="dateofentry" name="dateofentry" value="{{ \Carbon\Carbon::parse($record->dateofentry)->format('d/m/Y')}}" readonly>
+            </div>
+            <div class="mb-3">
+              <label for="dateofentry" class="form-label">Jam Masuk</label>
+              <input type="text" class="form-control" id="dateofentry" name="dateofentry" value="{{ \Carbon\Carbon::parse($record->dateofentry)->format('H:m')}}" readonly>
+            </div>
           <div class="col-md">
              <div class="mb-3">
               <label for="name_patient" class="form-label">Nama Pasien</label>
@@ -121,8 +129,20 @@
             <textarea class="form-control" id="operation" name="operation" rows="2" readonly>{{$record->operation}}</textarea>
           </div>
           <div class="mb-3">
-            <label for="drug" class="form-label">Obat</label>
+            <label for="drug" class="form-label">Obat 1</label>
             <input type="text" class="form-control" id="drug" name="drug" value="{{$record->drug->name}}" readonly>
+          </div>
+          <div class="mb-3">
+            <label for="drug2" class="form-label">Obat 2</label>
+            <input type="text" class="form-control" id="drug2" name="drug2" value="{{$record->drug2}}" readonly>
+          </div>
+          <div class="mb-3">
+            <label for="drug3" class="form-label">Obat 3</label>
+            <input type="text" class="form-control" id="drug3" name="drug3" value="{{$record->drug3}}" readonly>
+          </div>
+          <div class="mb-3">
+            <label for="drug4" class="form-label">Obat 4</label>
+            <input type="text" class="form-control" id="drug4" name="drug4" value="{{$record->drug4}}" readonly>
           </div>
           <div class="col-md">
             <div class="mb-3">
@@ -131,7 +151,7 @@
             </div>
             <div class="mb-3">
               <label for="bed_id" class="form-label">No Tempat Tidur</label>
-              <input type="number" class="form-control" id="bed_id" name="bed_id" value="{{$record->bed->id}}" readonly>
+              <input type="text" class="form-control" id="bed_id" name="bed_id" value="{{$record->bed->room}}" readonly>
             </div>
           </div>
           <div class="col-md">
@@ -141,13 +161,17 @@
             </div>
             <div class="mb-3">
               <label for="outdate" class="form-label">Tanggal Keluar</label>
-              <input type="date" class="form-control" id="outdate" name="outdate" value="{{$record->outdate}}" readonly>
+              <input type="text" class="form-control" id="outdate" name="outdate" value="{{ \Carbon\Carbon::parse($record->outdate)->format('d/m/Y')}}" readonly>
+            </div>
+            <div class="mb-3">
+              <label for="outdate" class="form-label">Jam Keluar</label>
+              <input type="text" class="form-control" id="outdate" name="outdate" value="{{ \Carbon\Carbon::parse($record->outdate)->format('H:m')}}" readonly>
             </div>
           </div>
         </div>
         <div class="mt-3 d-flex justify-content-end">
           <a class="btn btn-secondary" href="/record">Kembali</i></a>
-          <a class="btn btn-warning mx-1" href="/record/{{$record->id}}/edit">Ubah</i></a>
+          <a class="btn btn-warning mx-1" href="/record/{{$record->id_record}}/edit">Ubah</i></a>
           <a class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#comfirmModal">Hapus</a>
           <div class="modal fade" id="comfirmModal" tabindex="-1" aria-labelledby="comfirmModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
@@ -158,7 +182,7 @@
                 </div>
                 <div class="modal-body d-flex justify-content-center">
                   <p class="text-success">Anda yakin menghapus?
-                    <form action="/record/{{$record->id}}" method="post" class="mx-1">
+                    <form action="/record/{{$record->id_record}}" method="post" class="mx-1">
                       @method('delete')
                       @csrf
                       <button type="submit" class="badge bg-danger text-white border-0">Ya</button>

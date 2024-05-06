@@ -37,7 +37,7 @@ class EmployeeController extends Controller
     public function store(Request $request)
     {
         $validator = $request->validate([
-            'id' => 'required|min:10|max:20|unique:employees',
+            'id_employee' => 'required|min:10|max:20|unique:employees',
             'gender_id' => 'required',
             'name' => 'required|max:20',
             'position' => 'nullable|max:20',
@@ -90,8 +90,8 @@ class EmployeeController extends Controller
             'address' => 'nullable|max:50',
             'image' => 'nullable|image|file|max:1024'
         ];
-        if($request->id != $employee->id){
-            $rules['id'] = 'required|min:10|max:20|unique:employees';
+        if($request->id_employee != $employee->id_employee){
+            $rules['id_employee'] = 'required|min:10|max:20|unique:employees';
         }
         $validator = $request->validate($rules);
         if($request->file('image')){
@@ -100,7 +100,7 @@ class EmployeeController extends Controller
             }
             $validator['image'] = $request->file('image')->store('employee-image');
         }
-        Employee::where('id', $employee->id)->update($validator);
+        Employee::where('id_employee', $employee->id_employee)->update($validator);
         return redirect('/employee')->with('message', 'Pegawai telah diubah.');  
     }
 
@@ -112,7 +112,7 @@ class EmployeeController extends Controller
         if($employee->image){
             Storage::delete($employee->image);
         }
-        Employee::destroy($employee->id);
+        Employee::destroy($employee->id_employee);
         return redirect('/employee')->with('message', 'Pegawai telah dihapus.');
     }
 }

@@ -16,9 +16,9 @@
         <h5 class="card-title mb-0">{{$doctor->name}}</h5>
         <div class="text-muted mb-2">{{$doctor->specialist}}</div>
         <div>
-          <a class="btn btn-secondary btn-sm" href="/doctorprint/{{$doctor->id}}" target="_blank"><i data-feather="printer"></i></a>
+          <a class="btn btn-secondary btn-sm" href="/doctorprint/{{$doctor->id_doctor}}" target="_blank"><i data-feather="printer"></i></a>
           @if (auth()->user()->role == 'Admin')
-          <a class="btn btn-warning btn-sm" href="/doctor/{{$doctor->id}}/edit"><i data-feather="edit"></i></a>
+          <a class="btn btn-warning btn-sm" href="/doctor/{{$doctor->id_doctor}}/edit"><i data-feather="edit"></i></a>
           <a class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#comfirmModal"><i data-feather="trash-2"></i></a>
           @endif
         </div>
@@ -42,8 +42,8 @@
       </div>
       <div class="card-body">
         <div class="mb-3">
-          <label for="id" class="form-label">No Dokter</label>
-          <input type="number" class="form-control" id="id" name="id" value="{{$doctor->id}}" readonly>
+          <label for="id_doctor" class="form-label">No Dokter</label>
+          <input type="number" class="form-control" id="id_doctor" name="id_doctor" value="{{$doctor->id_doctor}}" readonly>
         </div>
         <div class="mb-3">
           <label for="name" class="form-label">Nama</label>
@@ -67,12 +67,16 @@
         </div>
         <div class="mb-3">
           <label for="gender" class="form-label">Jenis Kelamin</label>
-          <input type="text" class="form-control" id="gande" name="gande" value="{{$doctor->gender->gender}}" readonly>
+          <input type="text" class="form-control" id="gander" name="gande" value="{{$doctor->gender->gender}}" readonly>
+        </div>
+        <div class="mb-3">
+          <label for="document" class="form-label">Dokumen</label>
+          <a class="btn btn-success btn-sm" href="{{asset('storage/' . $doctor->document)}}" target="_blank"><i data-feather="download"></i></a>
         </div>
         <div class="mt-3 d-flex justify-content-end">
           <a class="btn btn-secondary" href="/doctor">Kembali</i></a>
           @if (auth()->user()->role == 'Admin')
-          <a class="btn btn-warning mx-1" href="/doctor/{{$doctor->id}}/edit">Ubah</i></a>
+          <a class="btn btn-warning mx-1" href="/doctor/{{$doctor->id_doctor}}/edit">Ubah</i></a>
           <a class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#comfirmModal">Hapus</a>
           @endif
           <div class="modal fade" id="comfirmModal" tabindex="-1" aria-labelledby="comfirmModalLabel" aria-hidden="true">
@@ -84,7 +88,7 @@
                 </div>
                 <div class="modal-body d-flex justify-content-center">
                   <p class="text-success">Anda yakin menghapus?
-                    <form action="/doctor/{{$doctor->id}}" method="post" class="mx-1">
+                    <form action="/doctor/{{$doctor->id_doctor}}" method="post" class="mx-1">
                       @method('delete')
                       @csrf
                       <button type="submit" class="badge bg-danger text-white border-0">Ya</button>

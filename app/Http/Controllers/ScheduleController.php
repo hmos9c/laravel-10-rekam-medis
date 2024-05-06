@@ -38,7 +38,7 @@ class ScheduleController extends Controller
     public function store(Request $request)
     {
         $validator = $request->validate([
-            'doctor_id' => 'required|min:10|max:20|exists:doctors,id',
+            'doctor_id' => 'required|min:10|max:20|exists:doctors,id_doctor',
             'day_id' => 'required',
             'time' => 'required|max:20',
         ]);
@@ -76,11 +76,11 @@ class ScheduleController extends Controller
     public function update(Request $request, Schedule $schedule)
     {
         $validator = $request->validate([
-            'doctor_id' => 'required|min:10|max:20|exists:doctors,id',
+            'doctor_id' => 'required|min:10|max:20|exists:doctors,id_doctor',
             'day_id' => 'required',
             'time' => 'required|max:20',
         ]);
-        Schedule::where('id', $schedule->id)->update($validator);
+        Schedule::where('id_schedule', $schedule->id_schedule)->update($validator);
         return redirect('/schedule')->with('message', 'Jadwal dokter telah diubah.');  
     }
 
@@ -89,7 +89,7 @@ class ScheduleController extends Controller
      */
     public function destroy(Schedule $schedule)
     {
-        Schedule::destroy($schedule->id);
+        Schedule::destroy($schedule->id_schedule);
         return redirect('/schedule')->with('message', 'Jadwal dokter telah dihapus.');
     }
 }

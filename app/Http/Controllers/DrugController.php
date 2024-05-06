@@ -35,12 +35,13 @@ class DrugController extends Controller
     public function store(Request $request)
     {
         $validator = $request->validate([
-            'id' => 'required|min:15|max:20|unique:drugs',
+            'id_drug' => 'required|min:15|max:20|unique:drugs',
             'type' => 'required|max:15',
             'form' => 'required|max:10',
             'name' => 'required|max:20',
             'description' => 'nullable',
             'stock' => 'nullable|max:4',
+            'expired' => 'required',
             'image' => 'nullable|image|file|max:1024'
         ]);
         if($request->file('image')){
@@ -83,10 +84,11 @@ class DrugController extends Controller
             'name' => 'required|max:20',
             'description' => 'nullable',
             'stock' => 'nullable|max:4',
+            'expired' => 'required',
             'image' => 'nullable|image|file|max:1024'
         ];
-        if($request->id != $drug->id){
-            $rules['id'] = 'required|min:15|max:20|unique:drugs';
+        if($request->id_drug != $drug->id_drug){
+            $rules['id_drug'] = 'required|min:15|max:20|unique:drugs';
         }
         $validator = $request->validate($rules);
         try {
@@ -96,7 +98,7 @@ class DrugController extends Controller
                 }
                 $validator['image'] = $request->file('image')->store('drug-image');
             }
-            Drug::where('id', $drug->id)->update($validator);
+            Drug::where('id_drug', $drug->id_drug)->update($validator);
         } catch (\Throwable $th) {
             return redirect('/drug')->with('error', 'Obat sedang digunakan ditabel rekam, tidak dapat mengubah obat!');
         }
@@ -112,7 +114,7 @@ class DrugController extends Controller
             if($drug->image){
                 Storage::delete($drug->image);
             }
-            Drug::destroy($drug->id);
+            Drug::destroy($drug->id_drug);
         } catch (\Throwable $th) {
             return redirect('/drug')->with('error', 'Obat sedang digunakan ditabel rekam, tidak dapat menghapus obat!');
         }

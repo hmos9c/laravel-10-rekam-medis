@@ -16,8 +16,8 @@
         <h5 class="card-title mb-0">{{$patient->name}}</h5>
         <div class="text-muted mb-2">{{$patient->job}}</div>
         <div>
-          <a class="btn btn-secondary btn-sm" href="/patientprint/{{$patient->id}}" target="_blank"><i data-feather="printer"></i></a>
-          <a class="btn btn-warning btn-sm" href="/patient/{{$patient->id}}/edit"><i data-feather="edit"></i></a>
+          <a class="btn btn-secondary btn-sm" href="/patientprint/{{$patient->id_patient}}" target="_blank"><i data-feather="printer"></i></a>
+          <a class="btn btn-warning btn-sm" href="/patient/{{$patient->id_patient}}/edit"><i data-feather="edit"></i></a>
           <a class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#comfirmModal"><i data-feather="trash-2"></i></a>
         </div>
       </div>
@@ -42,8 +42,8 @@
         <div class="row">
           <div class="col-md">
             <div class="mb-3">
-              <label for="id" class="form-label">NIK</label>
-              <input type="number" class="form-control" id="id" name="id" value="{{$patient->id}}" readonly>
+              <label for="id_patient" class="form-label">NIK</label>
+              <input type="number" class="form-control" id="id_patient" name="id_patient" value="{{$patient->id_patient}}" readonly>
             </div>
             <div class="mb-3">
               <label for="name" class="form-label">Nama</label>
@@ -99,7 +99,7 @@
         </div>
         <div class="mt-3 d-flex justify-content-end">
           <a class="btn btn-secondary" href="/patient">Kembali</i></a>
-          <a class="btn btn-warning mx-1" href="/patient/{{$patient->id}}/edit">Ubah</i></a>
+          <a class="btn btn-warning mx-1" href="/patient/{{$patient->id_patient}}/edit">Ubah</i></a>
           <a class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#comfirmModal">Hapus</a>
           <div class="modal fade" id="comfirmModal" tabindex="-1" aria-labelledby="comfirmModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
@@ -110,7 +110,7 @@
                 </div>
                 <div class="modal-body d-flex justify-content-center">
                   <p class="text-success">Anda yakin menghapus?
-                    <form action="/patient/{{$patient->id}}" method="post" class="mx-1">
+                    <form action="/patient/{{$patient->id_patient}}" method="post" class="mx-1">
                       @method('delete')
                       @csrf
                       <button type="submit" class="badge bg-danger text-white border-0">Ya</button>

@@ -16,8 +16,8 @@
         <h5 class="card-title mb-0">{{$drug->name}}</h5>
         <div class="text-muted mb-2">{{$drug->type}}</div>
         <div>
-          <a class="btn btn-secondary btn-sm" href="/drugprint/{{$drug->id}}" target="_blank"><i data-feather="printer"></i></a>
-          <a class="btn btn-warning btn-sm" href="/drug/{{$drug->id}}/edit"><i data-feather="edit"></i></a>
+          <a class="btn btn-secondary btn-sm" href="/drugprint/{{$drug->id_drug}}" target="_blank"><i data-feather="printer"></i></a>
+          <a class="btn btn-warning btn-sm" href="/drug/{{$drug->id_drug}}/edit"><i data-feather="edit"></i></a>
           <a class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#comfirmModal"><i data-feather="trash-2"></i></a>
         </div>
       </div>
@@ -40,8 +40,8 @@
       </div>
       <div class="card-body">
         <div class="mb-3">
-          <label for="id" class="form-label">No Obat</label>
-          <input type="number" class="form-control" id="id" name="id" value="{{$drug->id}}" readonly>
+          <label for="id_drug" class="form-label">No Obat</label>
+          <input type="number" class="form-control" id="id_drug" name="id_drug" value="{{$drug->id_drug}}" readonly>
         </div>
         <div class="mb-3">
           <label for="name" class="form-label">Nama</label>
@@ -63,9 +63,13 @@
           <label for="stock" class="form-label">Stok</label>
           <input type="number" class="form-control" id="stock" name="stock" value="{{$drug->stock}}" readonly>
         </div>
+        <div class="mb-3">
+          <label for="expired" class="form-label">Kadaluarsa</label>
+          <input type="date" class="form-control" id="expired" name="expired" value="{{$drug->expired}}" readonly>
+        </div>
         <div class="mt-3 d-flex justify-content-end">
           <a class="btn btn-secondary" href="/drug">Kembali</i></a>
-          <a class="btn btn-warning mx-1" href="/drug/{{$drug->id}}/edit">Ubah</i></a>
+          <a class="btn btn-warning mx-1" href="/drug/{{$drug->id_drug}}/edit">Ubah</i></a>
           <a class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#comfirmModal">Hapus</a>
           <div class="modal fade" id="comfirmModal" tabindex="-1" aria-labelledby="comfirmModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
@@ -76,7 +80,7 @@
                 </div>
                 <div class="modal-body d-flex justify-content-center">
                   <p class="text-success">Anda yakin menghapus?
-                    <form action="/drug/{{$drug->id}}" method="post" class="mx-1">
+                    <form action="/drug/{{$drug->id_drug}}" method="post" class="mx-1">
                       @method('delete')
                       @csrf
                       <button type="submit" class="badge bg-danger text-white border-0">Ya</button>

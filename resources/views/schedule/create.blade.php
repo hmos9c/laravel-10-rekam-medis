@@ -32,10 +32,10 @@
             <label for="day_id" class="form-label">Hari</label>
               <select class="form-select mb-3" name="day_id" id="day_id">
                 @foreach ($days as $day)
-                  @if (old('day_id') == $day->id)
-                    <option value="{{$day->id}}" selected>{{$day->name}}</option>
+                  @if (old('day_id') == $day->id_day)
+                    <option value="{{$day->id_day}}" selected>{{$day->name}}</option>
                   @else
-                    <option value="{{$day->id}}">{{$day->name}}</option>        
+                    <option value="{{$day->id_day}}">{{$day->name}}</option>        
                   @endif   
                 @endforeach
               </select>

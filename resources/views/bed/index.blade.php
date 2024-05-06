@@ -42,14 +42,14 @@
           @foreach ($beds as $bed)
           <tr>
             <td>{{$loop->iteration + $beds->firstItem() - 1}}</td>
-            <td>{{$bed->id}}</td>
+            <td>{{$bed->id_bed}}</td>
             <td class="d-none d-md-table-cell">{{$bed->building}}</td>
             <td>{{$bed->room}}</td>
             <td class="d-none d-md-table-cell">{{$bed->created_at->diffForHumans()}}</td>
             <td>
-              <a href="/bed/{{$bed->id}}" class="btn btn-info btn-sm"><i data-feather="eye"></i></a>
-							<a href="/bed/{{$bed->id}}/edit" class="btn btn-warning btn-sm"><i data-feather="edit"></i></a>
-              <form action="/bed/{{$bed->id}}" method="post" class="d-inline">
+              <a href="/bed/{{$bed->id_bed}}" class="btn btn-info btn-sm"><i data-feather="eye"></i></a>
+							<a href="/bed/{{$bed->id_bed}}/edit" class="btn btn-warning btn-sm"><i data-feather="edit"></i></a>
+              <form action="/bed/{{$bed->id_bed}}" method="post" class="d-inline">
                 @method('delete')
                 @csrf
                 <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Anda yakin menghapus?')"><i data-feather="trash-2"></i></button>

@@ -68,7 +68,7 @@
             </div>
             <div class="mb-2">
               <label for="id">No Dokter :</label>
-              <input type="number" id="id" name="id" value="{{$schedule->doctor->id}}" readonly>
+              <input type="number" id="id" name="id" value="{{$schedule->doctor->id_doctor}}" readonly>
             </div>
             <div class="mb-2">
               <label for="phonenumber">No Handphone :</label>

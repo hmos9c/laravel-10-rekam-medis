@@ -26,6 +26,7 @@
         <thead>
           <tr>
             <th>No</th>
+            <th>Foto</th>
             <th class="d-none d-md-table-cell">No Pegawai</th>
             <th>Nama</th>
             <th class="d-none d-md-table-cell">Jabatan</th>
@@ -37,14 +38,21 @@
           @foreach ($employees as $employee)
           <tr>
             <td>{{$loop->iteration + $employees->firstItem() - 1}}</td>
-            <td class="d-none d-md-table-cell">{{$employee->id}}</td>
+            <td>
+              @if ($employee->image)
+              <img src="{{asset('storage/' . $employee->image)}}" alt="{{$employee->name}}" width="50" height="50" />
+            @else
+              <img src="{{asset('img/default.png')}}" alt="{{$employee->name}}" class="img-fluid rounded-circle mb-2" width="50" height="50" >
+            @endif
+            </td>
+            <td class="d-none d-md-table-cell">{{$employee->id_employee}}</td>
             <td>{{$employee->name}}</td>
             <td class="d-none d-md-table-cell">{{$employee->position}}</td>
             <td class="d-none d-md-table-cell">{{$employee->phonenumber}}</td>
             <td>
-              <a href="/employee/{{$employee->id}}" class="btn btn-info btn-sm"><i data-feather="eye"></i></a>
-							<a href="/employee/{{$employee->id}}/edit" class="btn btn-warning btn-sm"><i data-feather="edit"></i></a>
-              <form action="/employee/{{$employee->id}}" method="post" class="d-inline">
+              <a href="/employee/{{$employee->id_employee}}" class="btn btn-info btn-sm"><i data-feather="eye"></i></a>
+							<a href="/employee/{{$employee->id_employee}}/edit" class="btn btn-warning btn-sm"><i data-feather="edit"></i></a>
+              <form action="/employee/{{$employee->id_employee}}" method="post" class="d-inline">
                 @method('delete')
                 @csrf
                 <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Anda yakin menghapus?')"><i data-feather="trash-2"></i></button>

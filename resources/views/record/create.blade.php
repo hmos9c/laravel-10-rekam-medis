@@ -21,6 +21,15 @@
               </div>
               @enderror
             </div>
+              <div class="mb-3">
+                <label for="dateofentry" class="form-label">Tanggal dan Jam Masuk</label>
+                <input type="datetime-local" class="form-control @error('dateofentry') is-invalid @enderror" id="dateofentry" name="dateofentry" value="{{old('dateofentry')}}">
+                @error('dateofentry')
+                <div class="invalid-feedback">
+                  {{$message}}
+                </div>
+                @enderror
+              </div>
           </div>
           <div class="col-md">
             <div class="mb-3">
@@ -28,10 +37,10 @@
               @if ($doctors->count())
                 <select class="form-select mb-3" name="doctor_id" id="doctor_id">
                   @foreach ($doctors as $doctor)
-                    @if (old('doctor_id') == $doctor->id)
-                      <option value="{{$doctor->id}}" selected>{{$doctor->name}}</option>
+                    @if (old('doctor_id') == $doctor->id_doctor)
+                      <option value="{{$doctor->id_doctor}}" selected>{{$doctor->name}}</option>
                       @else
-                      <option value="{{$doctor->id}}">{{$doctor->name}}</option>        
+                      <option value="{{$doctor->id_doctor}}">{{$doctor->name}}</option>        
                     @endif   
                   @endforeach
                 </select>
@@ -124,14 +133,14 @@
             @enderror
           </div>
           <div class="mb-3">
-            <label for="drug_id" class="form-label">Obat</label>
+            <label for="drug_id" class="form-label">Obat 1</label>
             @if ($drugs->count())
               <select class="form-select mb-3" name="drug_id" id="drug_id">
                 @foreach ($drugs as $drug)
-                  @if (old('drug_id') == $drug->id)
-                    <option value="{{$drug->id}}" selected>{{$drug->name}}</option>
+                  @if (old('drug_id') == $drug->id_drug)
+                    <option value="{{$drug->id_drug}}" selected>{{$drug->name}}</option>
                     @else
-                    <option value="{{$drug->id}}">{{$drug->name}}</option>        
+                    <option value="{{$drug->id_drug}}">{{$drug->name}}</option>
                   @endif   
                 @endforeach
               </select>
@@ -146,15 +155,87 @@
               @enderror
             @endif
           </div>
+          <div class="mb-3">
+            <label for="drug2" class="form-label">Obat 2</label>
+            @if ($drugs->count())
+              <select class="form-select mb-3" name="drug2" id="drug2">
+                @foreach ($drugs as $drug)
+                  @if (old('drug2') == $drug->id_drug)
+                    <option value="{{$drug->name}}">{{$drug->name}}</option>    
+                    @else
+                    <option value="{{$drug->name}}">{{$drug->name}}</option>        
+                  @endif   
+                @endforeach
+                <option value="Tidak Ada" selected>Tidak Ada</option>
+              </select>
+            @else
+              <div class="alert alert-secondary @error('drug2') alert-danger is-invalid @enderror" id="drug2" name="drug2" role="alert">
+                Tabel obat masih kosong <a href="/drug" class="alert-link"><strong class="text-success">Tambah</strong> tabel obat</a> terlebih dahulu.
+              </div>
+              @error('drug2')
+                <div class="invalid-feedback">
+                  {{$message}}
+                </div>
+              @enderror
+            @endif
+          </div>
+          <div class="mb-3">
+            <label for="drug3" class="form-label">Obat 3</label>
+            @if ($drugs->count())
+              <select class="form-select mb-3" name="drug3" id="drug3">
+                @foreach ($drugs as $drug)
+                  @if (old('drug3') == $drug->id_drug)
+                    <option value="{{$drug->name}}">{{$drug->name}}</option>    
+                    @else
+                    <option value="{{$drug->name}}">{{$drug->name}}</option>        
+                  @endif   
+                @endforeach
+                <option value="Tidak Ada" selected>Tidak Ada</option>
+              </select>
+            @else
+              <div class="alert alert-secondary @error('drug3') alert-danger is-invalid @enderror" id="drug3" name="drug3" role="alert">
+                Tabel obat masih kosong <a href="/drug" class="alert-link"><strong class="text-success">Tambah</strong> tabel obat</a> terlebih dahulu.
+              </div>
+              @error('drug3')
+                <div class="invalid-feedback">
+                  {{$message}}
+                </div>
+              @enderror
+            @endif
+          </div>
+          <div class="mb-3">
+            <label for="drug4" class="form-label">Obat 4</label>
+            @if ($drugs->count())
+              <select class="form-select mb-3" name="drug4" id="drug4">
+                @foreach ($drugs as $drug)
+                  @if (old('drug4') == $drug->id_drug)
+                    <option value="{{$drug->name}}">{{$drug->name}}</option>    
+                    @else
+                    <option value="{{$drug->name}}">{{$drug->name}}</option>        
+                  @endif   
+                @endforeach
+                <option value="Tidak Ada" selected>Tidak Ada</option>
+              </select>
+            @else
+              <div class="alert alert-secondary @error('drug4') alert-danger is-invalid @enderror" id="drug4" name="drug4" role="alert">
+                Tabel obat masih kosong <a href="/drug" class="alert-link"><strong class="text-success">Tambah</strong> tabel obat</a> terlebih dahulu.
+              </div>
+              @error('drug4')
+                <div class="invalid-feedback">
+                  {{$message}}
+                </div>
+              @enderror
+            @endif
+          </div>
           <div class="col-md">
             <div class="mb-3">
               <label for="care_id" class="form-label">Rawat</label>
               <select class="form-select mb-3" name="care_id" id="care_id">
                 @foreach ($cares as $care)
-                  @if (old('care_id') == $care->id)
-                    <option value="{{$care->id}}" selected>{{$care->care}}</option>
+                  @if (old('care_id') == $care->id_care)
+                    <option value="{{$care->id_care}}">{{$care->care}}</option>
                     @else
-                    <option value="{{$care->id}}">{{$care->care}}</option>        
+                    <option value="{{$care->id_care}}">{{$care->care}}</option>        
                   @endif   
                 @endforeach
               </select>
@@ -164,10 +245,10 @@
               @if ($beds->count())
                 <select class="form-select mb-3" name="bed_id" id="bed_id">
                   @foreach ($beds as $bed)
-                    @if (old('bed_id') == $bed->id)
-                      <option value="{{$bed->id}}" selected>{{$bed->id}}</option>
+                    @if (old('bed_id') == $bed->id_bed)
+                      <option value="{{$bed->id_bed}}" selected>{{$bed->room}}</option>
                       @else
-                      <option value="{{$bed->id}}">{{$bed->id}}</option>        
+                      <option value="{{$bed->id_bed}}">{{$bed->room}}</option>        
                     @endif   
                   @endforeach
                 </select>
@@ -194,8 +275,8 @@
               @enderror
             </div>
             <div class="mb-3">
-              <label for="outdate" class="form-label">Tanggal Keluar</label>
-              <input type="date" class="form-control @error('outdate') is-invalid @enderror" id="outdate" name="outdate" value="{{old('outdate')}}">
+              <label for="outdate" class="form-label">Tanggal dan Jam Keluar</label>
+              <input type="datetime-local" class="form-control @error('outdate') is-invalid @enderror" id="outdate" name="outdate" value="{{old('outdate')}}">
               @error('outdate')
               <div class="invalid-feedback">
                 {{$message}}

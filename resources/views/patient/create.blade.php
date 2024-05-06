@@ -32,9 +32,9 @@
         <div class="row">
           <div class="col-md">
             <div class="mb-3">
-              <label for="id" class="form-label">NIK</label>
-              <input type="number" class="form-control @error('id') is-invalid @enderror" id="id" name="id" autofocus value="{{old('id')}}">
-              @error('id')
+              <label for="id_patient" class="form-label">NIK</label>
+              <input type="number" class="form-control @error('id_patient') is-invalid @enderror" id="id_patient" name="id_patient" autofocus value="{{old('id_patient')}}">
+              @error('id_patient')
               <div class="invalid-feedback">
                 {{$message}}
               </div>
@@ -71,10 +71,10 @@
               <label for="gender_id" class="form-label">Jenis Kelamin</label>
               <select class="form-select mb-3" name="gender_id" id="gender_id">
                 @foreach ($genders as $gender)
-                  @if (old('gender_id') == $gender->id)
-                    <option value="{{$gender->id}}" selected>{{$gender->gender}}</option>
+                  @if (old('gender_id') == $gender->id_gender)
+                    <option value="{{$gender->id_gender}}" selected>{{$gender->gender}}</option>
                     @else
-                    <option value="{{$gender->id}}">{{$gender->gender}}</option>        
+                    <option value="{{$gender->id_gender}}">{{$gender->gender}}</option>        
                   @endif   
                 @endforeach
               </select>
@@ -83,10 +83,10 @@
               <label for="religion_id" class="form-label">Agama</label>
               <select class="form-select mb-3" name="religion_id" id="religion_id">
                 @foreach ($religions as $religion)
-                  @if (old('religion_id') == $religion->id)
-                    <option value="{{$religion->id}}" selected>{{$religion->name}}</option>
+                  @if (old('religion_id') == $religion->id_religion)
+                    <option value="{{$religion->id_religion}}" selected>{{$religion->name}}</option>
                   @else
-                  <option value="{{$religion->id}}">{{$religion->name}}</option>
+                  <option value="{{$religion->id_religion}}">{{$religion->name}}</option>
                   @endif
                 @endforeach
               </select>
@@ -97,10 +97,10 @@
               <label for="status_id" class="form-label">Status Menikah</label>
               <select class="form-select mb-3" name="status_id" id="status_id">
                 @foreach ($statuses as $status)
-                  @if (old('status_id') == $status->id)
-                    <option value="{{$status->id}}" selected>{{$status->status}}</option>
+                  @if (old('status_id') == $status->id_status)
+                    <option value="{{$status->id_status}}" selected>{{$status->status}}</option>
                   @else
-                  <option value="{{$status->id}}">{{$status->status}}</option>
+                  <option value="{{$status->id_status}}">{{$status->status}}</option>
                   @endif
                 @endforeach
               </select>
@@ -118,22 +118,13 @@
               <label for="nationality_id" class="form-label">Kewarganegaraan</label>
               <select class="form-select mb-3" name="nationality_id" id="nationality_id">
                 @foreach ($nationalities as $nationality)
-                  @if (old('nationality_id') == $nationality->id)
-                    <option value="{{$nationality->id}}" selected>{{$nationality->nationality}}</option>
+                  @if (old('nationality_id') == $nationality->id_nationality)
+                    <option value="{{$nationality->id_nationality}}" selected>{{$nationality->nationality}}</option>
                   @else
-                  <option value="{{$nationality->id}}">{{$nationality->nationality}}</option>
+                  <option value="{{$nationality->id_nationality}}">{{$nationality->nationality}}</option>
                   @endif
                 @endforeach
               </select>
-            </div>
-            <div class="mb-3">
-              <label for="dateofentry" class="form-label">Tanggal Masuk</label>
-              <input type="date" class="form-control @error('dateofentry') is-invalid @enderror" id="dateofentry" name="dateofentry" value="{{old('dateofentry')}}">
-              @error('dateofentry')
-              <div class="invalid-feedback">
-                {{$message}}
-              </div>
-              @enderror
             </div>
             <div class="mb-3">
               <label for="phonenumber" class="form-label">No handphone</label>

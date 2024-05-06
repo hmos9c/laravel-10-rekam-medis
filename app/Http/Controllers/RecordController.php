@@ -18,7 +18,7 @@ class RecordController extends Controller
     {
         return view('record.index',  [
             'title' => 'Rekam Pasien',
-            'records' => Record::latest()->filter(request(['search']))->paginate(10)->withQueryString()
+            'records' => Record::latest()->filter(request(['search', 'dateofentry', 'outdate']))->paginate(10)->withQueryString()
         ]);
     }
 
@@ -42,7 +42,7 @@ class RecordController extends Controller
     public function store(Request $request)
     {
         $validator = $request->validate([
-            'patient_id' => 'required|exists:patients,id',
+            'patient_id' => 'required|exists:patients,id_patient',
             'doctor_id' => 'required',
             'drug_id' => 'required',
             'bed_id' => 'required',
@@ -56,9 +56,13 @@ class RecordController extends Controller
             'blood' => 'nullable|max:2',
             'tension' => 'nullable|max:15',
             'hospital' => 'nullable|max:20',
+            'dateofentry' => 'required',
             'outdate' => 'nullable',
+            'drug2' => 'nullable',
+            'drug3' => 'nullable',
+            'drug4' => 'nullable'
         ]);
-          $validator['id'] = fake()->unique()->numerify('##########');
+          $validator['id_record'] = fake()->unique()->numerify('##########');
           Record::create($validator);
           return redirect('/record')->with('message', 'Rekam pasien telah ditambahkan.');
     }
@@ -108,13 +112,14 @@ class RecordController extends Controller
             'blood' => 'nullable',
             'tension' => 'nullable',
             'hospital' => 'nullable',
+            'dateofentry' => 'required',
             'outdate' => 'nullable',
+            'drug2' => 'nullable',
+            'drug3' => 'nullable',
+            'drug4' => 'nullable'
         ];
-        if($request->id != $record->id){
-            $rules['id'] = 'required|min:10|max:10|unique:records';
-        }
         $validator = $request->validate($rules);
-        Record::where('id', $record->id)->update($validator);
+        Record::where('id_record', $record->id_record)->update($validator);
         return redirect('/record')->with('message', 'Rekam pasien telah diubah.');
     }
 
@@ -123,7 +128,7 @@ class RecordController extends Controller
      */
     public function destroy(Record $record)
     {
-        Record::destroy($record->id);
+        Record::destroy($record->id_record);
         return redirect('/record')->with('message', 'Rekam pasien telah dihapus.');
     }
 }

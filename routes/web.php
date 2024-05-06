@@ -22,6 +22,7 @@ use App\Http\Controllers\DoctorPrintController;
 use App\Http\Controllers\RecordPrintController;
 use App\Http\Controllers\PatientPrintController;
 use App\Http\Controllers\EmployeePrintController;
+use App\Http\Controllers\RecordSearchController;
 use App\Http\Controllers\SchedulePrintController;
 
 /*

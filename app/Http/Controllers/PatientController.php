@@ -43,7 +43,7 @@ class PatientController extends Controller
     public function store(Request $request)
     {
         $validator = $request->validate([
-            'id' => 'required|min:16|max:20|unique:patients',
+            'id_patient' => 'required|min:16|max:20|unique:patients',
             'gender_id' => 'required',
             'religion_id' => 'required',
             'status_id' => 'required',
@@ -53,7 +53,6 @@ class PatientController extends Controller
             'dateofbirth' => 'required',
             'address' => 'required|max:50',
             'job' => 'nullable|max:20',
-            'dateofentry' => 'required',
             'outdate' => 'nullable',
             'phonenumber' => 'required|min:12|max:12',
             'email' => 'nullable|email|max:100|unique:patients',
@@ -107,13 +106,12 @@ class PatientController extends Controller
             'dateofbirth' => 'required',
             'address' => 'required|max:50',
             'job' => 'required|max:20',
-            'dateofentry' => 'required',
             'outdate' => 'nullable',
             'phonenumber' => 'required|min:12|max:12',
             'image' => 'nullable|image|file|max:1024'
         ];
-        if($request->id != $patient->id){
-            $rules['id'] = 'required|min:16|max:20|unique:patients';
+        if($request->id_patient != $patient->id_patient){
+            $rules['id_patient'] = 'required|min:16|max:20|unique:patients';
         }
         if($request->email != $patient->email){
             $rules['email'] = 'unique:patients|max:100';
@@ -126,7 +124,7 @@ class PatientController extends Controller
                 }
                 $validator['image'] = $request->file('image')->store('patient-image');
             }
-            Patient::where('id', $patient->id)->update($validator);
+            Patient::where('id_patient', $patient->id_patient)->update($validator);
         } catch (\Throwable $th) {
             return redirect('/patient')->with('error', 'Pasien sedang digunakan ditabel rekam, tidak dapat mengubah pasien!');
         }   
@@ -142,7 +140,7 @@ class PatientController extends Controller
             if($patient->image){
                 Storage::delete($patient->image);
             }
-            Patient::destroy($patient->id);
+            Patient::destroy($patient->id_patient);
         } catch (\Throwable $th) {
             return redirect('/patient')->with('error', 'Pasien sedang digunakan ditabel rekam, tidak dapat menghapus pasien!');
         }

@@ -50,7 +50,7 @@
           @foreach ($doctors as $doctor)
           <tr>
             <td>{{$loop->iteration}}</td>
-            <td>{{$doctor->id}}</td>
+            <td>{{$doctor->id_doctor}}</td>
             <td>{{$doctor->name}}</td>
             <td>{{$doctor->specialist}}</td>
             <td>{{$doctor->phonenumber}}</td>

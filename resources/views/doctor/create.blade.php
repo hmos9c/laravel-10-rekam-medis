@@ -1,7 +1,7 @@
 @extends('layouts.index')
 @section('main')
 <h3 class="mb-3"><strong>Tambah</strong> Dokter</h3>
-<div class="row">
+<div class="row mb-3">
   <div class="col-md-4 col-xl-3">
     <div class="card mb-3">
       <div class="card-header">
@@ -30,9 +30,9 @@
       </div>
       <div class="card-body">
           <div class="mb-3">
-            <label for="id" class="form-label">No Dokter</label>
-            <input type="text" class="form-control @error('id') is-invalid @enderror" id="id" name="id" autofocus value="{{old('id')}}">
-            @error('id')
+            <label for="id_doctor" class="form-label">No Dokter</label>
+            <input type="text" class="form-control @error('id_doctor') is-invalid @enderror" id="id_doctor" name="id_doctor" autofocus value="{{old('id_doctor')}}">
+            @error('id_doctor')
             <div class="invalid-feedback">
               {{$message}}
             </div>
@@ -87,13 +87,22 @@
             <label for="gender_id" class="form-label">Jenis Kelamin</label>
             <select class="form-select mb-3" name="gender_id" id="gender_id">
               @foreach ($genders as $gender)
-                @if (old('gender_id') == $gender->id)
-                  <option value="{{$gender->id}}" selected>{{$gender->gender}}</option>
+                @if (old('gender_id') == $gender->id_gender)
+                  <option value="{{$gender->id_gender}}" selected>{{$gender->gender}}</option>
                 @else
-                  <option value="{{$gender->id}}">{{$gender->gender}}</option>        
+                  <option value="{{$gender->id_gender}}">{{$gender->gender}}</option>        
                 @endif
               @endforeach
             </select>
+          </div>
+          <div class="mb-3">
+            <label for="document" class="form-label">Unggah Dokumen</label>
+            <input class="form-control @error('document') is-invalid @enderror" type="file" id="document" name="document">
+            @error('document')
+            <div class="invalid-feedback">
+              {{$message}}
+            </div>
+            @enderror
           </div>
           <div class="mt-3 d-flex justify-content-end">
               <a class="btn btn-secondary me-1" href="/doctor">Kembali</i></a>

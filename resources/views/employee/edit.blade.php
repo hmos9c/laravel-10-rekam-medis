@@ -15,7 +15,7 @@
           <img id="img-preview" src="{{asset('img/default.png')}}" class="img-preview img-fluid rounded-circle mb-2"  width="128" height="128">
           @endif
         </div>
-        <form action="/employee/{{$employee->id}}" method="post" enctype="multipart/form-data">
+        <form action="/employee/{{$employee->id_employee}}" method="post" enctype="multipart/form-data">
           @method('put')
           @csrf
         <input type="hidden" name="oldImage" value="{{$employee->image}}">
@@ -46,9 +46,9 @@
       </div>
       <div class="card-body">
           <div class="mb-3">
-            <label for="id" class="form-label">Nomor Pegawai</label>
-            <input type="number" class="form-control @error('id') is-invalid @enderror" id="id" name="id" value="{{old('id', $employee->id)}}">
-            @error('id')
+            <label for="id_employee" class="form-label">Nomor Pegawai</label>
+            <input type="number" class="form-control @error('id_employee') is-invalid @enderror" id="id_employee" name="id_employee" value="{{old('id_employee', $employee->id_employee)}}">
+            @error('id_employee')
             <div class="invalid-feedback">
               {{$message}}
             </div>
@@ -103,10 +103,10 @@
             <label for="gender_id" class="form-label">Jenis Kelamin</label>
             <select class="form-select mb-3" name="gender_id" id="gender_id">
               @foreach ($genders as $gender)
-                @if (old('gender_id', $employee->gender_id) == $gender->id)
-                  <option value="{{$gender->id}}" selected>{{$gender->gender}}</option>
+                @if (old('gender_id', $employee->gender_id) == $gender->id_gender)
+                  <option value="{{$gender->id_gender}}" selected>{{$gender->gender}}</option>
                   @else
-                  <option value="{{$gender->id}}">{{$gender->gender}}</option>        
+                  <option value="{{$gender->id_gender}}">{{$gender->gender}}</option>        
                 @endif   
               @endforeach
             </select>
