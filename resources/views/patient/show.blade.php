@@ -127,5 +127,54 @@
       </div>
     </div>
   </div>
+  <div class="card-body">
+    <div class="mb-3">
+      <div class="row">
+        <div class="col-lg d-flex">
+          <div class="card flex-fill">
+            <div class="card-header">
+              <h5 class="card-title mb-0">Rekam Pasien</h5>
+              <a href="" class="btn btn-success my-3">Tambah</a>
+            </div>
+            @if ($records->count())
+            <table class="table table-hover my-0">
+              <thead>
+                <tr>
+                  <th>No</th>
+                  <th class="d-none d-md-table-cell">Tanggal Periksa</th>
+                  <th class="d-none d-md-table-cell">Dokter</th>
+                  <th class="d-none d-md-table-cell">Rawat</th>
+                  <th>Aksi</th>
+                </tr>
+              </thead>
+              <tbody>
+                @foreach ($records as $record)
+                <tr>
+                  <td>{{$loop->iteration + $records->firstItem() - 1}}</td>
+                  <td class="d-none d-md-table-cell">{{ \Carbon\Carbon::parse($record->dateofentry)->format('d/m/Y')}}</td>
+                  <td class="d-none d-md-table-cell">{{$record->doctor->name}}</td>
+                  <td class="d-none d-md-table-cell">{{$record->care->care}}</td>
+                  <td class="d-none d-md-table-cell"><a href="/record/{{$record->id_record}}" class="btn btn-info btn-sm"><i data-feather="eye"></i></a></td>
+                </tr>
+                @endforeach
+              </tbody>
+            </table>
+            @else
+            <div class="d-flex justify-content-center mb-2">
+              <div class="alert alert-secondary col-11" role="alert">
+                Tabel rekam pasien masih kosong 
+                <a href="" class="alert-link">klik tombol <strong class="text-success">Tambah</strong></a>
+                untuk menambah rekam pasien.
+              </div>
+            </div>
+            @endif
+          </div>
+        </div>
+        <div class="d-flex justify-content-center">
+          {{ $records->links() }}
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 @endsection

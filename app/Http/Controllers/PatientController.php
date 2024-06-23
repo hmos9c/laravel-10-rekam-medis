@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Patient;
 use App\Models\Gender;
-use App\Models\Nationality;
-use App\Models\Religion;
+use App\Models\Record;
 use App\Models\Status;
+use App\Models\Patient;
+use App\Models\Religion;
+use App\Models\Nationality;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -72,7 +73,8 @@ class PatientController extends Controller
     {
         return view('patient.show', [
             'title' => 'Detail Pegawai',
-            'patient' => $patient
+            'patient' => $patient,
+            'records' => Record::where('patient_id', $patient->id_patient)->latest('dateofentry')->paginate(10)
         ]);
     }
 
