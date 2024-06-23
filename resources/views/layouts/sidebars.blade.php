@@ -105,6 +105,30 @@
 
       @if (auth()->user()->role === 'Admin')
       <li class="sidebar-header">
+        Laporan
+      </li>
+        
+      <li class="sidebar-item {{Request::is('reportpatient*') ? 'active' : ''}}">
+        <a class="sidebar-link" href="/reportpatient">
+          <i class="align-middle" data-feather="book"></i> <span class="align-middle">Laporan Perpasien</span>
+        </a>
+      </li>
+      
+      <li class="sidebar-item {{Request::is('reportdate*') ? 'active' : ''}}">
+        <a class="sidebar-link" href="/reportdate">
+          <i class="align-middle" data-feather="book"></i> <span class="align-middle">Laporan Pertanggal</span>
+        </a>
+      </li>
+
+      <li class="sidebar-item {{Request::is('reportdoctor*') ? 'active' : ''}}">
+        <a class="sidebar-link" href="/reportdoctor">
+          <i class="align-middle" data-feather="book"></i> <span class="align-middle">Laporan Perdokter</span>
+        </a>
+      </li>
+      @endif
+
+      @if (auth()->user()->role === 'Admin')
+      <li class="sidebar-header">
         Administrasi
       </li>
 

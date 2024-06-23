@@ -95,15 +95,6 @@
               @endforeach
             </select>
           </div>
-          <div class="mb-3">
-            <label for="document" class="form-label">Unggah Dokumen</label>
-            <input class="form-control @error('document') is-invalid @enderror" type="file" id="document" name="document">
-            @error('document')
-            <div class="invalid-feedback">
-              {{$message}}
-            </div>
-            @enderror
-          </div>
           <div class="mt-3 d-flex justify-content-end">
               <a class="btn btn-secondary me-1" href="/doctor">Kembali</i></a>
               <button type="submit" class="btn btn-success">Tambah</button>

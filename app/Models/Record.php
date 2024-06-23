@@ -14,11 +14,11 @@ class Record extends Model
     public function scopeFilter($query, $filters)
     {
 
-        $query->when($filters['dateofentry'] ?? false, function($query, $search){
+        $query->when($filters['fromdate'] ?? false, function($query, $search){
             return $query->whereDate('dateofentry', '>=', $search);
         });
-        $query->when($filters['outdate'] ?? false, function($query, $search){
-            return $query->whereDate('outdate', '<=', $search);
+        $query->when($filters['untildate'] ?? false, function($query, $search){
+            return $query->whereDate('dateofentry', '<=', $search);
         });
 
         $query->when($filters['search'] ?? false, function($query, $search){

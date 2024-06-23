@@ -19,7 +19,7 @@ class FrontendController extends Controller
     {
         return view('frontend.index', [
             'title' => 'RS Cijantung',
-            'schedules' => Schedule::latest()->paginate(10),
+            'schedules' => Schedule::latest('day_id')->paginate(10),
             'patients' => Patient::all(),
             'doctors' => Doctor::all(),
             'records' => Record::all(),

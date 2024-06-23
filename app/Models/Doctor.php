@@ -36,4 +36,8 @@ class Doctor extends Model
     {
         return $this->hasMany(Record::class, 'doctor_id', 'id_doctor');
     }
+    public function document()
+    {
+        return $this->hasMany(Document::class, 'doctor_id', 'id_doctor');
+    }
 }

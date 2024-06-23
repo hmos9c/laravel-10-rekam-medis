@@ -1,6 +1,6 @@
 @extends('layouts.index')
 @section('main')
-<h3 class="mb-3"><strong>Analisis</strong> Rekam Pasien</h3>
+<h3 class="mb-3"><strong>Analisis</strong> Laporan Pasien</h3>
 @if(session()->has('message'))
 <div class="alert alert-success alert-dismissible fade show" role="alert">
   {{ session('message') }}
@@ -11,10 +11,10 @@
   <div class="col-lg d-flex">
     <div class="card flex-fill">
       <div class="card-header">
-        <h5 class="card-title mb-0">Tabel Rekam Pasien</h5>
+        <h5 class="card-title mb-0">Tabel Laporan Pasien</h5>
         <a href="/record/create" class="btn btn-success my-3">Tambah</a>
-        <a href="/recordprint" target="_blank" class="btn btn-secondary my-3">Print</a>
-        <form action="/record">
+        <a href="" onclick="window.print();" class="btn btn-secondary my-3">Print</a>
+        <form action="/reportdoctor">
           <div class="input-group">
             <input type="text" class="form-control" placeholder="Cari.." autofocus name="search" value="{{ request('search') }}">
             <input type="date" class="form-control" name="fromdate" value="{{ request('fromdate') }}">
@@ -28,10 +28,10 @@
         <thead>
           <tr>
             <th>No</th>
-            <th class="d-none d-md-table-cell">No Rekam Pasien</th>
-            <th>Pasien</th>
-            <th>Dokter</th>
-            <th class="d-none d-md-table-cell">Tanggal Masuk</th>
+            <th>Tanggal Masuk</th>
+            <th>Tanggal Keluar</th>
+            <th>Nama Pasien</th>
+            <th class="d-none d-md-table-cell">Rawat</th>
             <th>Aksi</th>
           </tr>
         </thead>
@@ -39,10 +39,10 @@
           @foreach ($records as $record)
           <tr>
             <td>{{$loop->iteration + $records->firstItem() - 1}}</td>
-            <td class="d-none d-md-table-cell">{{$record->id_record}}</td>
-            <td>{{$record->patient->name}}</td>
-            <td>{{$record->doctor->name}}</td>
-            <td class="d-none d-md-table-cell">{{ \Carbon\Carbon::parse($record->dateofentry)->format('d/m/Y')}}</td>
+            <td>{{ \Carbon\Carbon::parse($record->dateofentry)->format('d/m/Y')}}</td>
+            <td>{{ \Carbon\Carbon::parse($record->outdate)->format('d/m/Y')}}</td>
+            <td class="d-none d-md-table-cell">{{ $record->patient->name}}</td>
+            <td class="d-none d-md-table-cell">{{ $record->care->care}}</td>
             <td>
               <a href="/record/{{$record->id_record}}" class="btn btn-info btn-sm"><i data-feather="eye"></i></a>
 							<a href="/record/{{$record->id_record}}/edit" class="btn btn-warning btn-sm"><i data-feather="edit"></i></a>

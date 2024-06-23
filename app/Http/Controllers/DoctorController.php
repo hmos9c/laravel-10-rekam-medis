@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Doctor;
+use App\Models\Document;
 use App\Models\Gender;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -44,14 +45,10 @@ class DoctorController extends Controller
             'phonenumber' => 'required|min:10|max:12',
             'accepted' => 'required',
             'address' => 'required|max:50',
-            'image' => 'nullable|image|file|max:1024',
-            'document' => 'nullable|mimes:doc,docx,pdf,xlx,xlsx,ppt,pptx|file|max:5024'
+            'image' => 'nullable|image|file|max:1024'
         ]);
         if($request->file('image')){
             $validator['image'] = $request->file('image')->store('doctor-image');
-        }
-        if($request->file('document')){
-            $validator['document'] = $request->file('document')->store('doctor-document');
         }
         Doctor::create($validator);
         return redirect('/doctor')->with('message', 'Dokter telah ditambahkan.');
@@ -64,7 +61,8 @@ class DoctorController extends Controller
     {
         return view('doctor.show', [
             'title' => 'Detail Dokter',
-            'doctor' => $doctor
+            'doctor' => $doctor,
+            'documents' => Document::where('doctor_id', $doctor->id_doctor)->latest()->paginate(10)
         ]);
     }
 
@@ -92,8 +90,7 @@ class DoctorController extends Controller
             'phonenumber' => 'required|min:10|max:12',
             'accepted' => 'required',
             'address' => 'nullable|max:50',
-            'image' => 'nullable|image|file|max:1024',
-            'document' => 'nullable|mimes:doc,docx,pdf,xlx,xlsx,ppt,pptx|file|max:5024'
+            'image' => 'nullable|image|file|max:1024'
         ];
         if($request->id_doctor != $doctor->id_doctor){
             $rules['id_doctor'] = 'required|min:10|max:19|unique:doctors';
@@ -104,12 +101,6 @@ class DoctorController extends Controller
                 Storage::delete($request->oldImage);
             }
             $validator['image'] = $request->file('image')->store('doctor-image');
-        }
-        if($request->file('document')){
-            if($request->oldDocument){
-                Storage::delete($request->oldDocument);
-            }
-            $validator['document'] = $request->file('document')->store('doctor-document');
         }
         try {
             Doctor::where('id_doctor', $doctor->id_doctor)->update($validator);
@@ -127,9 +118,6 @@ class DoctorController extends Controller
         try {
             if($doctor->image){
                 Storage::delete($doctor->image);
-            }
-            if($doctor->document){
-                Storage::delete($doctor->document);
             }
             Doctor::destroy($doctor->id_doctor);
         } catch (\Throwable $th) {

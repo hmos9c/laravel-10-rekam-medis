@@ -70,8 +70,75 @@
           <input type="text" class="form-control" id="gander" name="gande" value="{{$doctor->gender->gender}}" readonly>
         </div>
         <div class="mb-3">
-          <label for="document" class="form-label">Dokumen</label>
-          <a class="btn btn-success btn-sm" href="{{asset('storage/' . $doctor->document)}}" target="_blank"><i data-feather="download"></i></a>
+          @if(session()->has('error'))
+          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            {{ session('error') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+          @endif
+          @if(session()->has('message'))
+          <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ session('message') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+          @endif
+          <div class="row">
+            <div class="col-lg d-flex">
+              <div class="card flex-fill">
+                <div class="card-header">
+                  <h5 class="card-title mb-0">Dokumen Dokter</h5>
+                  @if (auth()->user()->role == 'Admin')
+                  <a href="/document/create/{{$doctor->id_doctor}}" class="btn btn-success my-3">Tambah</a>
+                  @endif
+                </div>
+                @if ($documents->count())
+                <table class="table table-hover my-0">
+                  <thead>
+                    <tr>
+                      <th>No</th>
+                      <th class="d-none d-md-table-cell">Nama</th>
+                      <th class="d-none d-md-table-cell">Dokumen</th>
+                      <th>Aksi</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @foreach ($documents as $document)
+                    <tr>
+                      <td>{{$loop->iteration + $documents->firstItem() - 1}}</td>
+                      <td class="d-none d-md-table-cell">{{$document->name}}</td>
+                      <td class="d-none d-md-table-cell"><a href="{{ asset('storage/' . $document->document) }}" target="_blank" class="btn btn-success btn-sm">Unduh Dokumen</a></td>
+                      <td> 
+                        @if (auth()->user()->role == 'Admin')			
+                        <form action="/document/{{$document->id_document}}" method="post" class="d-inline">
+                          @method('delete')
+                          @csrf
+                          <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Anda yakin menghapus?')"><i data-feather="trash-2"></i></button>
+                        </form>
+                        @endif
+                      </td>
+                    </tr>
+                    @endforeach
+                  </tbody>
+                </table>
+                @else
+                <div class="d-flex justify-content-center mb-2">
+                  <div class="alert alert-secondary col-11" role="alert">
+                    Tabel dokumen masih kosong 
+                    @if (auth()->user()->role == 'Admin')
+                    <a href="/document/create/{{$doctor->id_doctor}}" class="alert-link">klik tombol <strong class="text-success">Tambah</strong></a>
+                    @else
+                      Hanya Admin 
+                    @endif
+                    untuk menambah dokumen.
+                  </div>
+                </div>
+                @endif
+              </div>
+            </div>
+            <div class="d-flex justify-content-center">
+              {{ $documents->links() }}
+            </div>
+          </div>
         </div>
         <div class="mt-3 d-flex justify-content-end">
           <a class="btn btn-secondary" href="/doctor">Kembali</i></a>

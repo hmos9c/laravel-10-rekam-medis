@@ -18,7 +18,7 @@ class RecordController extends Controller
     {
         return view('record.index',  [
             'title' => 'Rekam Pasien',
-            'records' => Record::latest()->filter(request(['search', 'dateofentry', 'outdate']))->paginate(10)->withQueryString()
+            'records' => Record::latest()->filter(request(['search', 'fromdate', 'untildate']))->paginate(10)->withQueryString()
         ]);
     }
 
